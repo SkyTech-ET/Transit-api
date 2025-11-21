@@ -1,0 +1,244 @@
+﻿<Project>
+  <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/address-documents/4c9de140-e1ff-4d2d-8e51-816561ec0ef4.3noggwhaap.pdf">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\address-documents\4c9de140-e1ff-4d2d-8e51-816561ec0ef4.pdf'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"3noggwhaap"},{"Name":"integrity","Value":"sha256-Qf/YoEczin3kqxmBwyPwRyCqCMBujD7h3dXNgt3sYT8="},{"Name":"label","Value":"_content/MyGojo.API/address-documents/4c9de140-e1ff-4d2d-8e51-816561ec0ef4.pdf"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"442505"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\u0022Qf/YoEczin3kqxmBwyPwRyCqCMBujD7h3dXNgt3sYT8=\u0022"},{"Name":"Last-Modified","Value":"Wed, 12 Mar 2025 19:05:09 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/address-documents/4c9de140-e1ff-4d2d-8e51-816561ec0ef4.pdf">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\address-documents\4c9de140-e1ff-4d2d-8e51-816561ec0ef4.pdf'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Qf/YoEczin3kqxmBwyPwRyCqCMBujD7h3dXNgt3sYT8="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"442505"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\u0022Qf/YoEczin3kqxmBwyPwRyCqCMBujD7h3dXNgt3sYT8=\u0022"},{"Name":"Last-Modified","Value":"Wed, 12 Mar 2025 19:05:09 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/address-documents/4fbd3a89-d470-45f7-ba3f-636a3326f521.3noggwhaap.pdf">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\address-documents\4fbd3a89-d470-45f7-ba3f-636a3326f521.pdf'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"3noggwhaap"},{"Name":"integrity","Value":"sha256-Qf/YoEczin3kqxmBwyPwRyCqCMBujD7h3dXNgt3sYT8="},{"Name":"label","Value":"_content/MyGojo.API/address-documents/4fbd3a89-d470-45f7-ba3f-636a3326f521.pdf"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"442505"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\u0022Qf/YoEczin3kqxmBwyPwRyCqCMBujD7h3dXNgt3sYT8=\u0022"},{"Name":"Last-Modified","Value":"Wed, 12 Mar 2025 19:04:19 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/address-documents/4fbd3a89-d470-45f7-ba3f-636a3326f521.pdf">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\address-documents\4fbd3a89-d470-45f7-ba3f-636a3326f521.pdf'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Qf/YoEczin3kqxmBwyPwRyCqCMBujD7h3dXNgt3sYT8="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"442505"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\u0022Qf/YoEczin3kqxmBwyPwRyCqCMBujD7h3dXNgt3sYT8=\u0022"},{"Name":"Last-Modified","Value":"Wed, 12 Mar 2025 19:04:19 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/address-documents/ce5ee640-6ea8-4829-a030-ffe3360908e7.3noggwhaap.pdf">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\address-documents\ce5ee640-6ea8-4829-a030-ffe3360908e7.pdf'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"3noggwhaap"},{"Name":"integrity","Value":"sha256-Qf/YoEczin3kqxmBwyPwRyCqCMBujD7h3dXNgt3sYT8="},{"Name":"label","Value":"_content/MyGojo.API/address-documents/ce5ee640-6ea8-4829-a030-ffe3360908e7.pdf"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"442505"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\u0022Qf/YoEczin3kqxmBwyPwRyCqCMBujD7h3dXNgt3sYT8=\u0022"},{"Name":"Last-Modified","Value":"Wed, 12 Mar 2025 19:04:19 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/address-documents/ce5ee640-6ea8-4829-a030-ffe3360908e7.pdf">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\address-documents\ce5ee640-6ea8-4829-a030-ffe3360908e7.pdf'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Qf/YoEczin3kqxmBwyPwRyCqCMBujD7h3dXNgt3sYT8="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"442505"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\u0022Qf/YoEczin3kqxmBwyPwRyCqCMBujD7h3dXNgt3sYT8=\u0022"},{"Name":"Last-Modified","Value":"Wed, 12 Mar 2025 19:04:19 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/address-documents/f5822ae7-f4a5-4483-84f9-351fad8e97b2.3noggwhaap.pdf">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\address-documents\f5822ae7-f4a5-4483-84f9-351fad8e97b2.pdf'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"3noggwhaap"},{"Name":"integrity","Value":"sha256-Qf/YoEczin3kqxmBwyPwRyCqCMBujD7h3dXNgt3sYT8="},{"Name":"label","Value":"_content/MyGojo.API/address-documents/f5822ae7-f4a5-4483-84f9-351fad8e97b2.pdf"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"442505"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\u0022Qf/YoEczin3kqxmBwyPwRyCqCMBujD7h3dXNgt3sYT8=\u0022"},{"Name":"Last-Modified","Value":"Wed, 12 Mar 2025 19:05:09 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/address-documents/f5822ae7-f4a5-4483-84f9-351fad8e97b2.pdf">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\address-documents\f5822ae7-f4a5-4483-84f9-351fad8e97b2.pdf'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Qf/YoEczin3kqxmBwyPwRyCqCMBujD7h3dXNgt3sYT8="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"442505"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\u0022Qf/YoEczin3kqxmBwyPwRyCqCMBujD7h3dXNgt3sYT8=\u0022"},{"Name":"Last-Modified","Value":"Wed, 12 Mar 2025 19:05:09 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/property-images/09ba752a-bdf3-4863-82ef-f3754908e310.51tlg0sew9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\property-images\09ba752a-bdf3-4863-82ef-f3754908e310.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"51tlg0sew9"},{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="},{"Name":"label","Value":"_content/MyGojo.API/property-images/09ba752a-bdf3-4863-82ef-f3754908e310.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 05 Mar 2025 09:08:59 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/property-images/09ba752a-bdf3-4863-82ef-f3754908e310.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\property-images\09ba752a-bdf3-4863-82ef-f3754908e310.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 05 Mar 2025 09:08:59 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/property-images/25154bb5-9649-4485-8ea8-ea36a04f8eab.51tlg0sew9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\property-images\25154bb5-9649-4485-8ea8-ea36a04f8eab.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"51tlg0sew9"},{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="},{"Name":"label","Value":"_content/MyGojo.API/property-images/25154bb5-9649-4485-8ea8-ea36a04f8eab.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 21 Feb 2025 06:40:20 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/property-images/25154bb5-9649-4485-8ea8-ea36a04f8eab.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\property-images\25154bb5-9649-4485-8ea8-ea36a04f8eab.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 21 Feb 2025 06:40:20 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/property-images/369f7ee2-6052-4af1-bf75-64e2054a85c4.51tlg0sew9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\property-images\369f7ee2-6052-4af1-bf75-64e2054a85c4.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"51tlg0sew9"},{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="},{"Name":"label","Value":"_content/MyGojo.API/property-images/369f7ee2-6052-4af1-bf75-64e2054a85c4.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 05 Mar 2025 09:08:59 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/property-images/369f7ee2-6052-4af1-bf75-64e2054a85c4.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\property-images\369f7ee2-6052-4af1-bf75-64e2054a85c4.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 05 Mar 2025 09:08:59 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/property-images/973c687e-b53e-4629-92d6-9bd65dd7359b.51tlg0sew9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\property-images\973c687e-b53e-4629-92d6-9bd65dd7359b.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"51tlg0sew9"},{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="},{"Name":"label","Value":"_content/MyGojo.API/property-images/973c687e-b53e-4629-92d6-9bd65dd7359b.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 05 Mar 2025 09:08:59 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/property-images/973c687e-b53e-4629-92d6-9bd65dd7359b.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\property-images\973c687e-b53e-4629-92d6-9bd65dd7359b.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 05 Mar 2025 09:08:59 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/property-images/9ca1f82f-23d3-4113-8f14-f14dc4efc8b3.51tlg0sew9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\property-images\9ca1f82f-23d3-4113-8f14-f14dc4efc8b3.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"51tlg0sew9"},{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="},{"Name":"label","Value":"_content/MyGojo.API/property-images/9ca1f82f-23d3-4113-8f14-f14dc4efc8b3.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 05 Mar 2025 09:22:08 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/property-images/9ca1f82f-23d3-4113-8f14-f14dc4efc8b3.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\property-images\9ca1f82f-23d3-4113-8f14-f14dc4efc8b3.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 05 Mar 2025 09:22:08 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/property-images/be2ff786-3315-464f-aef1-486f07bac535.51tlg0sew9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\property-images\be2ff786-3315-464f-aef1-486f07bac535.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"51tlg0sew9"},{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="},{"Name":"label","Value":"_content/MyGojo.API/property-images/be2ff786-3315-464f-aef1-486f07bac535.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 05 Mar 2025 09:03:24 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/property-images/be2ff786-3315-464f-aef1-486f07bac535.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\property-images\be2ff786-3315-464f-aef1-486f07bac535.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 05 Mar 2025 09:03:24 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/property-images/d72a8484-ea96-4661-8053-80f492e12205.51tlg0sew9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\property-images\d72a8484-ea96-4661-8053-80f492e12205.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"51tlg0sew9"},{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="},{"Name":"label","Value":"_content/MyGojo.API/property-images/d72a8484-ea96-4661-8053-80f492e12205.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Thu, 27 Feb 2025 13:46:44 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/property-images/d72a8484-ea96-4661-8053-80f492e12205.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\property-images\d72a8484-ea96-4661-8053-80f492e12205.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Thu, 27 Feb 2025 13:46:44 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/property-images/fe3fcf51-7227-448f-8dfa-634a65c3b79c.51tlg0sew9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\property-images\fe3fcf51-7227-448f-8dfa-634a65c3b79c.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"51tlg0sew9"},{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="},{"Name":"label","Value":"_content/MyGojo.API/property-images/fe3fcf51-7227-448f-8dfa-634a65c3b79c.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 05 Mar 2025 09:08:38 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/property-images/fe3fcf51-7227-448f-8dfa-634a65c3b79c.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\property-images\fe3fcf51-7227-448f-8dfa-634a65c3b79c.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 05 Mar 2025 09:08:38 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/store_Logos/1d55e15e-85e2-47c3-b985-8c4be3d02e18.51tlg0sew9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\store_Logos\1d55e15e-85e2-47c3-b985-8c4be3d02e18.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"51tlg0sew9"},{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="},{"Name":"label","Value":"_content/MyGojo.API/store_Logos/1d55e15e-85e2-47c3-b985-8c4be3d02e18.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 09:38:49 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/store_Logos/1d55e15e-85e2-47c3-b985-8c4be3d02e18.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\store_Logos\1d55e15e-85e2-47c3-b985-8c4be3d02e18.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 09:38:49 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/store_Logos/2355996d-b9dc-481f-9e0e-bb005cd13f2a.51tlg0sew9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\store_Logos\2355996d-b9dc-481f-9e0e-bb005cd13f2a.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"51tlg0sew9"},{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="},{"Name":"label","Value":"_content/MyGojo.API/store_Logos/2355996d-b9dc-481f-9e0e-bb005cd13f2a.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 09:23:09 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/store_Logos/2355996d-b9dc-481f-9e0e-bb005cd13f2a.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\store_Logos\2355996d-b9dc-481f-9e0e-bb005cd13f2a.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 09:23:09 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/store_Logos/3d62ad2c-ee3b-4e85-a0e9-f8974d8f0e55.51tlg0sew9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\store_Logos\3d62ad2c-ee3b-4e85-a0e9-f8974d8f0e55.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"51tlg0sew9"},{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="},{"Name":"label","Value":"_content/MyGojo.API/store_Logos/3d62ad2c-ee3b-4e85-a0e9-f8974d8f0e55.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 09:20:24 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/store_Logos/3d62ad2c-ee3b-4e85-a0e9-f8974d8f0e55.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\store_Logos\3d62ad2c-ee3b-4e85-a0e9-f8974d8f0e55.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 09:20:24 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/store_Logos/53ca91c0-be80-4def-b388-768aa90c74a6.51tlg0sew9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\store_Logos\53ca91c0-be80-4def-b388-768aa90c74a6.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"51tlg0sew9"},{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="},{"Name":"label","Value":"_content/MyGojo.API/store_Logos/53ca91c0-be80-4def-b388-768aa90c74a6.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 09:36:37 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/store_Logos/53ca91c0-be80-4def-b388-768aa90c74a6.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\store_Logos\53ca91c0-be80-4def-b388-768aa90c74a6.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 09:36:37 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/store_Logos/613e6a73-fc25-4157-839f-1e97c5437328.51tlg0sew9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\store_Logos\613e6a73-fc25-4157-839f-1e97c5437328.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"51tlg0sew9"},{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="},{"Name":"label","Value":"_content/MyGojo.API/store_Logos/613e6a73-fc25-4157-839f-1e97c5437328.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 09:23:34 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/store_Logos/613e6a73-fc25-4157-839f-1e97c5437328.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\store_Logos\613e6a73-fc25-4157-839f-1e97c5437328.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 09:23:34 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/store_Logos/b6b18eb8-7582-4bef-ad21-560714750479.51tlg0sew9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\store_Logos\b6b18eb8-7582-4bef-ad21-560714750479.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"51tlg0sew9"},{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="},{"Name":"label","Value":"_content/MyGojo.API/store_Logos/b6b18eb8-7582-4bef-ad21-560714750479.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 09:24:38 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/store_Logos/b6b18eb8-7582-4bef-ad21-560714750479.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\store_Logos\b6b18eb8-7582-4bef-ad21-560714750479.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 09:24:38 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/store_Logos/c6216ed9-efa8-4f40-b43c-389771c01737.51tlg0sew9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\store_Logos\c6216ed9-efa8-4f40-b43c-389771c01737.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"51tlg0sew9"},{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="},{"Name":"label","Value":"_content/MyGojo.API/store_Logos/c6216ed9-efa8-4f40-b43c-389771c01737.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 09:22:18 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/store_Logos/c6216ed9-efa8-4f40-b43c-389771c01737.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\store_Logos\c6216ed9-efa8-4f40-b43c-389771c01737.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 09:22:18 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/store_Logos/fdf12fe5-792c-4d15-b9e4-c4b7ce0cb2d3.51tlg0sew9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\store_Logos\fdf12fe5-792c-4d15-b9e4-c4b7ce0cb2d3.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"51tlg0sew9"},{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="},{"Name":"label","Value":"_content/MyGojo.API/store_Logos/fdf12fe5-792c-4d15-b9e4-c4b7ce0cb2d3.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 09:31:31 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyGojo.API/store_Logos/fdf12fe5-792c-4d15-b9e4-c4b7ce0cb2d3.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\store_Logos\fdf12fe5-792c-4d15-b9e4-c4b7ce0cb2d3.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"67562"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OdYKKIhtw6kyG6Ws4jaqSOwcdW9JCHdQMe0XmpgoTUI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 09:31:31 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+  </ItemGroup>
+</Project>

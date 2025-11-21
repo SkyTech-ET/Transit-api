@@ -1,0 +1,9 @@
+﻿global using MediatR;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.EntityFrameworkCore;
+global using Transit.Application.Common;
+global using Transit.Application.Dtos;
+global using Transit.Application.Model;
+global using Transit.Application.Services;
+global using Transit.Domain.Data;
+global using Transit.Domain.Models;

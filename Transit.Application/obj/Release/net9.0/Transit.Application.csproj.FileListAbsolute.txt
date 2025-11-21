@@ -1,0 +1,16 @@
+C:\Users\Agumir\source\repos\transit\Transit-api\Transit.Application\bin\Release\net9.0\Transit.Application.deps.json
+C:\Users\Agumir\source\repos\transit\Transit-api\Transit.Application\bin\Release\net9.0\Transit.Application.dll
+C:\Users\Agumir\source\repos\transit\Transit-api\Transit.Application\bin\Release\net9.0\Transit.Application.pdb
+C:\Users\Agumir\source\repos\transit\Transit-api\Transit.Application\bin\Release\net9.0\Transit.Domain.dll
+C:\Users\Agumir\source\repos\transit\Transit-api\Transit.Application\bin\Release\net9.0\Transit.Domain.pdb
+C:\Users\Agumir\source\repos\transit\Transit-api\Transit.Application\obj\Release\net9.0\Transit.Application.csproj.AssemblyReference.cache
+C:\Users\Agumir\source\repos\transit\Transit-api\Transit.Application\obj\Release\net9.0\Transit.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Agumir\source\repos\transit\Transit-api\Transit.Application\obj\Release\net9.0\Transit.Application.AssemblyInfoInputs.cache
+C:\Users\Agumir\source\repos\transit\Transit-api\Transit.Application\obj\Release\net9.0\Transit.Application.AssemblyInfo.cs
+C:\Users\Agumir\source\repos\transit\Transit-api\Transit.Application\obj\Release\net9.0\Transit.Application.csproj.CoreCompileInputs.cache
+C:\Users\Agumir\source\repos\transit\Transit-api\Transit.Application\obj\Release\net9.0\Transit.Application.sourcelink.json
+C:\Users\Agumir\source\repos\transit\Transit-api\Transit.Application\obj\Release\net9.0\Transit..A7DA550C.Up2Date
+C:\Users\Agumir\source\repos\transit\Transit-api\Transit.Application\obj\Release\net9.0\Transit.Application.dll
+C:\Users\Agumir\source\repos\transit\Transit-api\Transit.Application\obj\Release\net9.0\refint\Transit.Application.dll
+C:\Users\Agumir\source\repos\transit\Transit-api\Transit.Application\obj\Release\net9.0\Transit.Application.pdb
+C:\Users\Agumir\source\repos\transit\Transit-api\Transit.Application\obj\Release\net9.0\ref\Transit.Application.dll

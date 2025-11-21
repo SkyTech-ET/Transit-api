@@ -1,0 +1,24 @@
+using Transit.Domain.Models.MOT;
+using Transit.Domain.Models.Shared;
+
+namespace Transit.Api.Contracts.MOT.Response;
+
+public class ServiceDetail
+{
+    public long Id { get; set; }
+    public string ServiceNumber { get; set; } = string.Empty;
+    public string ItemDescription { get; set; } = string.Empty;
+    public string RouteCategory { get; set; } = string.Empty;
+    public decimal DeclaredValue { get; set; }
+    public string TaxCategory { get; set; } = string.Empty;
+    public string CountryOfOrigin { get; set; } = string.Empty;
+    public ServiceType ServiceType { get; set; }
+    public ServiceStatus Status { get; set; }
+    public RiskLevel RiskLevel { get; set; }
+    public long CustomerId { get; set; }
+    public long? AssignedCaseExecutorId { get; set; }
+    public long? AssignedAssessorId { get; set; }
+    public DateTime RegisteredDate { get; set; }
+    public DateTime? LastUpdateDate { get; set; }
+}
+
