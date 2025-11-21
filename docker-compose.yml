@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  mygojoapi:
+    image: mygojoapi
+    build:
+      context: .
+      dockerfile: Transit.API/Dockerfile
+    # ports:
+    #   - 5004:5004
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - DB_HOST=127.0.0.1  # Set database host to 127.0.0.1 for access to the host machine
+    volumes:
+      - mygojo-api-storages:/app/wwwroot  # Bind mount for storage
+    network_mode: host  # Use host network mode to access the database via 127.0.0.1
+    restart: always
+
+volumes:
+  mygojo-api-storages:
+    external: true
