@@ -21,7 +21,7 @@ internal class GetAllServicesQueryHandler : IRequestHandler<GetAllServicesQuery,
             .Include(s => s.Customer)
             .Include(s => s.AssignedCaseExecutor)
             .Include(s => s.AssignedAssessor)
-            .Include(s => s.CreatedByDataEncoder)
+            .Include(s => s.CreatedByUserId)
             .Include(s => s.Stages)
             .Include(s => s.Documents)
             .AsQueryable();

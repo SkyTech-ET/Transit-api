@@ -349,6 +349,9 @@ namespace Transit.Domain.Migrations
                     b.Property<long>("CreatedByDataEncoderId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<long>("CreatedByUserId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<long>("CustomerId")
                         .HasColumnType("INTEGER");
 
@@ -415,8 +418,6 @@ namespace Transit.Domain.Migrations
                     b.HasIndex("AssignedAssessorId");
 
                     b.HasIndex("AssignedCaseExecutorId");
-
-                    b.HasIndex("CreatedByDataEncoderId");
 
                     b.HasIndex("CustomerId");
 
@@ -631,6 +632,9 @@ namespace Transit.Domain.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("CompletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("EndDate")
@@ -1247,12 +1251,6 @@ namespace Transit.Domain.Migrations
                         .HasForeignKey("AssignedCaseExecutorId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("Transit.Domain.Models.User", "CreatedByDataEncoder")
-                        .WithMany()
-                        .HasForeignKey("CreatedByDataEncoderId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("Transit.Domain.Models.User", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId")
@@ -1262,8 +1260,6 @@ namespace Transit.Domain.Migrations
                     b.Navigation("AssignedAssessor");
 
                     b.Navigation("AssignedCaseExecutor");
-
-                    b.Navigation("CreatedByDataEncoder");
 
                     b.Navigation("Customer");
                 });

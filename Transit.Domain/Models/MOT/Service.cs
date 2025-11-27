@@ -26,12 +26,11 @@ public class Service : BaseEntity
     public User Customer { get; set; }
     public User? AssignedCaseExecutor { get; set; }
     public User? AssignedAssessor { get; set; }
-    public User CreatedByDataEncoder { get; set; }
+    public long CreatedByUserId { get; set; }
     
     public ICollection<ServiceStageExecution> Stages => _stages;
     public ICollection<ServiceDocument> Documents => _documents;
     public ICollection<ServiceMessage> Messages => _messages;
-
     public static Service Create(
         string serviceNumber,
         string itemDescription,
@@ -41,7 +40,7 @@ public class Service : BaseEntity
         string countryOfOrigin,
         ServiceType serviceType,
         long customerId,
-        long createdByDataEncoderId)
+        long createdByUserId)
     {
         return new Service
         {
@@ -55,7 +54,7 @@ public class Service : BaseEntity
             Status = ServiceStatus.Draft,
             RiskLevel = RiskLevel.Blue,
             CustomerId = customerId,
-            CreatedByDataEncoderId = createdByDataEncoderId,
+            CreatedByUserId = createdByUserId,
             RecordStatus = RecordStatus.Active
         };
     }

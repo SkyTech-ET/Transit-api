@@ -1,14 +1,15 @@
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Transit.Api.Contracts.MOT.Request;
+using Transit.Api.Contracts.MOT.Response;
+using Transit.API.DTO.MasterData;
+using Transit.API.Helpers;
+using Transit.Application;
+using Transit.Controllers;
 using Transit.Domain.Data;
 using Transit.Domain.Models.MOT;
 using Transit.Domain.Models.Shared;
-using Microsoft.EntityFrameworkCore;
-using Transit.Controllers;
-using Transit.API.Helpers;
-using Transit.Application;
-using Transit.Api.Contracts.MOT.Request;
-using Transit.Api.Contracts.MOT.Response;
-using Mapster;
 
 namespace Transit.API.Controllers.MOT;
 
@@ -31,18 +32,53 @@ public class ServiceController : BaseController
     [HttpPost("Create")]
     public async Task<IActionResult> Create([FromBody] CreateServiceRequest request)
     {
+        // Get current authenticated user
         var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
 
-        var command = request.Adapt<CreateServiceRequestCommand>();
+        // Map request to command and set CreatedByUserId
+        var command = request.Adapt<CreateServiceCommand>();
         command.CustomerId = request.CustomerId;
         command.CreatedByUserId = currentUserId.Value;
 
+        // Execute command
         var result = await _mediator.Send(command);
 
-        return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(result.Payload);
+        if (result.IsError)
+            return HandleErrorResponse(result.Errors);
+
+        // Map payload to clean response DTO to avoid circular reference
+        var service = result.Payload;
+        var response = new ServiceResponse
+        {
+            Id = service.Id,
+            ServiceNumber = service.ServiceNumber,
+            ItemDescription = service.ItemDescription,
+            DeclaredValue = service.DeclaredValue,
+            CountryOfOrigin = service.CountryOfOrigin,
+            ServiceType = service.ServiceType,
+            CustomerId = service.CustomerId,
+            CreatedByUserId = service.CreatedByUserId,
+            Stages = service.Stages?.Select(s => new ServiceStageResponse
+            {
+                Id = s.Id,
+                Stage = s.Stage,
+                Status = s.RecordStatus,
+                CreatedDate = s.CreatedDate
+            }).ToList() ?? new List<ServiceStageResponse>()
+        };
+
+        return Ok(new
+        {
+            statusCode = 200,
+            error = false,
+            errors = Array.Empty<string>(),
+            message = "Operation Success",
+            response = response
+        });
     }
+
 
     /// <summary>
     /// Get all services with filtering and pagination

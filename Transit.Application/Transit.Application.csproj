@@ -30,8 +30,4 @@
 		<ProjectReference Include="..\Transit.Domain\Transit.Domain.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Queries\MasterData\" />
-	</ItemGroup>
-
 </Project>

@@ -1,10 +1,11 @@
-﻿using Transit.Api.Contracts.User.Request;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using Transit.Api;
+using Transit.Api.Contracts.User.Request;
 using Transit.Api.Contracts.User.Response;
 using Transit.Domain.Data;
 using Transit.Domain.Models.Shared;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
 
 namespace Transit.Controllers;
 public class UserController : BaseController
@@ -65,6 +66,20 @@ public class UserController : BaseController
         var userDetail = result.Payload.Adapt<UserDetail>();
 
         return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(result.Payload);
+    }
+    [HttpGet("db-test")]
+    public async Task<IActionResult> DbTest()
+    {
+        try
+        {
+            // Replace Users with a table you have
+            var count = await _context.Users.CountAsync();
+            return Ok($"Connected to PostgreSQL! Users count: {count}");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"DB error: {ex.Message}");
+        }
     }
 
     [HttpPut("Update")]
@@ -181,6 +196,9 @@ public class UserController : BaseController
         var query = new GetAllUsersQuery { RecordStatus = recordStatus };
         var result = await _mediator.Send(query);
 
+        if (result.IsError)
+            return HandleErrorResponse(result.Errors);
+
         var usersList = result.Payload.Select(u => new UserDetail
         {
             Id = u.Id,
@@ -191,28 +209,44 @@ public class UserController : BaseController
             IsSuperAdmin = u.IsSuperAdmin,
             IsAccountLocked = u.IsAccountLocked,
             LastLoginDateTime = u.LastLoginDateTime,
+            PhoneNumber = u.Phone,
+            LoginAttemptCount = u.LoginAttemptCount,
+            RecordStatus = u.RecordStatus,
+            IsConfirmationEmailSent = u.IsConfirmationEmailSent,
+            VerificationToken = u.VerificationToken,
 
-            //    // Map nested roles
-            //    Roles = u.UserRoles?.Select(ur => new RoleDetail
-            //    {
-            //        Id = ur.Role.Id,
-            //        Name = ur.Role.Name
-            //    }).ToList(),
-            //    // Safely map the UserStore as a single StoreDetail (not a list)
-            //    UserStore = = null
-            //? new StoreDetail
+            // 🔹 Store Ids
+         //   StoreIds = u.UserStores?.Select(s => s.StoreId).ToList() ?? new(),
+
+            // 🔹 Roles mapping
+            Roles = u.UserRoles?.Select(ur => new RoleDetail
+            {
+                Id = ur.Role.Id,
+                Name = ur.Role.Name,
+                Description = ur.Role.Description,
+                RecordStatus = ur.Role.RecordStatus,
+                Privileges = ur.Role.RolePrivileges?.Select(p => new PrivilegeDetail
+                {
+                    Id = p.Privilege.Id,
+                    Action = p.Privilege.Action,
+                    Description = p.Privilege.Description,
+                    RecordStatus = p.Privilege.RecordStatus
+                }).ToList()
+            }).ToList(),
+
+            // Store Detail (single)
+            //UserStore = u.UserStores?.Select(s => new StoreDetail
             //{
-            //    // Id = u.UserStores.FirstOrDefault()?.StoreId ?? 0,  // Handle null safely
-            //    // Name = u.UserStores.FirstOrDefault()?.Store?.Name ?? "Unknown"  // Handle null safely
-            //}
-            //: null
+            //    Id = s.Store.Id,
+            //    Name = s.Store.Name,
+            //    RecordStatus = s.Store.RecordStatus
+            //}).FirstOrDefault()
+
         }).ToList();
 
-
-
-
-        return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(result.Payload);
+        return HandleSuccessResponse(usersList); // 👉 FIXED
     }
+
 
     [HttpGet("GetById")]
     public async Task<IActionResult> GetById(long id)

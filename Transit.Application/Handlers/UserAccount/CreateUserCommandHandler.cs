@@ -22,54 +22,61 @@ internal class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Ope
     public async Task<OperationResult<User>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
         var result = new OperationResult<User>();
-        var userName = GetCurrentUserName();
-        if (string.IsNullOrEmpty(userName))
-        {
-            userName = "";
-        }
         long userId = 0;
-        if (userName.Length > 0)
+
+        // Get current logged-in userId if exists
+        var userName = GetCurrentUserName() ?? string.Empty;
+
+        if (!string.IsNullOrWhiteSpace(userName))
         {
             var existingUsers = await _context.Users
-                      .FirstOrDefaultAsync(x => x.Username == userName);
-            userId = existingUsers.Id;
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.Username == userName, cancellationToken);
+
+            if (existingUsers != null)
+                userId = existingUsers.Id;
         }
 
-        var existingUser = await _context.Users.FirstOrDefaultAsync(x => x.Username == request.Username || x.Email == request.Email);
-        if (existingUser is not null)
+        // Check if username or email already exist
+        var existingUser = await _context.Users
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.Username == request.Username || x.Email == request.Email, cancellationToken);
+
+        if (existingUser != null)
         {
-            result.AddError(ErrorCode.UserAlreadyExists, "User already exist.");
+            result.AddError(ErrorCode.UserAlreadyExists, "User already exists.");
             return result;
         }
-        var user = User.CreateUser(request.Username, request.Email, request.FirstName, request.LastName, request.ProfilePhoto, request.Phone, request.Password, request.IsSuperAdmin, Domain.Models.Shared.AccountStatus.Approved);
+
+        // Create new user
+        var user = User.CreateUser(request.Username, request.Email, request.FirstName, request.LastName,
+                                   request.ProfilePhoto, request.Phone, request.Password,
+                                   request.IsSuperAdmin, Domain.Models.Shared.AccountStatus.Approved);
+
         user.UpdatePassword(_passwordService.HashPassword(request.Password));
 
-
-        request.Roles.ForEach(roleid =>
+        // Assign roles
+        request.Roles.ForEach(roleId =>
         {
-            user.AddRole(new UserRole
-            {
-                RoleId = roleid,
-                UserId = user.Id
-            });
-
+            user.AddRole(new UserRole { RoleId = roleId, UserId = user.Id });
         });
-        _context.Users.Add(user);
-        _context.SaveChanges();
-        result.Payload = user;
-        result.Message = "Operation success";
-        var options = new JsonSerializerOptions
-        {
-            ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve,
-            WriteIndented = true
-        };
 
-        //await _actionLogService.LogActionAsync(
-        //    userId,
-        //    JsonSerializer.Serialize(request, options),
-        //    JsonSerializer.Serialize(result, options),
-        //    "CreateUser"
-        //);
+        // Save to DB
+        await _context.Users.AddAsync(user, cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        result.Payload = user;
+        result.Message = "Operation successful";
+
+        // Optional — logging
+        /*
+        var options = new JsonSerializerOptions { ReferenceHandler = ReferenceHandler.Preserve, WriteIndented = true };
+        await _actionLogService.LogActionAsync(
+            userId,
+            JsonSerializer.Serialize(request, options),
+            JsonSerializer.Serialize(result, options),
+            "CreateUser");
+        */
 
         return result;
     }

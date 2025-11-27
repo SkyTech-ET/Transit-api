@@ -54,12 +54,6 @@ namespace Transit.Domain.Data
                 .HasForeignKey(s => s.AssignedAssessorId)
                 .OnDelete(DeleteBehavior.SetNull);
 
-            modelBuilder.Entity<Service>()
-                .HasOne(s => s.CreatedByDataEncoder)
-                .WithMany()
-                .HasForeignKey(s => s.CreatedByDataEncoderId)
-                .OnDelete(DeleteBehavior.Restrict);
-
             // ServiceStageExecution configurations
             modelBuilder.Entity<ServiceStageExecution>()
                 .HasOne(ss => ss.Service)

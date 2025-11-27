@@ -542,68 +542,16 @@
   },
   {
     "ContainingType": "Transit.API.Controllers.MOT.DataEncoderController",
-    "Method": "CreateService",
-    "RelativePath": "api/v1/DataEncoder/CreateService",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "Transit.Api.Contracts.MOT.Request.CreateServiceRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Transit.API.Controllers.MOT.DataEncoderController",
     "Method": "GetAllCustomers",
-    "RelativePath": "api/v1/DataEncoder/GetAllCustomers",
+    "RelativePath": "api/v1/DataEncoder/GetAllCustomers/{recordStatus}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "isVerified",
-        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "page",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "pageSize",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Transit.API.Controllers.MOT.DataEncoderController",
-    "Method": "GetAllServices",
-    "RelativePath": "api/v1/DataEncoder/GetAllServices",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "status",
+        "Name": "recordStatus",
         "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "page",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "pageSize",
-        "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -2012,6 +1960,16 @@
         "IsRequired": false
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Transit.Controllers.UserController",
+    "Method": "DbTest",
+    "RelativePath": "api/v1/User/db-test",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

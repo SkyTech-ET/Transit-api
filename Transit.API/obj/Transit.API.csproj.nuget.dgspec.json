@@ -70,6 +70,10 @@
               "target": "Package",
               "version": "[9.0.2, )"
             },
+            "Microsoft.AspNetCore.Mvc.Versioning": {
+              "target": "Package",
+              "version": "[5.1.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.1, )"
@@ -91,6 +95,10 @@
             "Microsoft.IdentityModel.JsonWebTokens": {
               "target": "Package",
               "version": "[8.0.1, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.4, )"
             },
             "QRCoder": {
               "target": "Package",

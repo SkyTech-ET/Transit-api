@@ -43,7 +43,7 @@ public class CustomerController : BaseController
         if (customer == null)
             return BadRequest("Customer not found or not verified");
 
-        var command = request.Adapt<CreateServiceRequestCommand>();
+        var command = request.Adapt<CreateServiceCommand>();
         command.CustomerId = customer.Id;
         command.CreatedByUserId = currentUserId.Value;
 

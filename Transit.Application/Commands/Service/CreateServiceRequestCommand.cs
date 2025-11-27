@@ -3,7 +3,7 @@ using Transit.Domain.Models.Shared;
 
 namespace Transit.Application;
 
-public class CreateServiceRequestCommand : IRequest<OperationResult<Service>>
+public class CreateServiceCommand : IRequest<OperationResult<Service>>
 {
     public long CustomerId { get; set; }
     public string ItemDescription { get; set; } = string.Empty;

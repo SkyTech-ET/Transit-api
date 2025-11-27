@@ -92,7 +92,7 @@ public class AssessorController : BaseController
 
         var services = await _context.Services
             .Include(s => s.Customer)
-            .Include(s => s.CreatedByDataEncoder)
+            .Include(s => s.CreatedByUserId)
             .Include(s => s.Documents)
             .Where(s => s.Status == ServiceStatus.Submitted)
             .OrderByDescending(s => s.RegisteredDate)

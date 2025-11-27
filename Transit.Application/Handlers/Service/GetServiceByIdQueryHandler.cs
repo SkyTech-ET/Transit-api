@@ -20,7 +20,7 @@ internal class GetServiceByIdQueryHandler : IRequestHandler<GetServiceByIdQuery,
             .Include(s => s.Customer)
             .Include(s => s.AssignedCaseExecutor)
             .Include(s => s.AssignedAssessor)
-            .Include(s => s.CreatedByDataEncoder)
+            .Include(s => s.CreatedByUserId)
             .Include(s => s.Stages)
                 .ThenInclude(stage => stage.StageComments)
             .Include(s => s.Stages)

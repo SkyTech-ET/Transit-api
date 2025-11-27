@@ -5,14 +5,14 @@ using System.Text.Json;
 
 namespace Transit.Application;
 
-internal class CreateServiceRequestCommandHandler : IRequestHandler<CreateServiceRequestCommand, OperationResult<Service>>
+internal class CreateServiceommandHandler : IRequestHandler<CreateServiceCommand, OperationResult<Service>>
 {
     private readonly ApplicationDbContext _context;
     private readonly IHttpContextAccessor _httpContextAccessor;
     private ISession? _session => _httpContextAccessor.HttpContext?.Session;
     private readonly TokenHandlerService _tokenHandlerService;
 
-    public CreateServiceRequestCommandHandler(
+    public CreateServiceommandHandler(
         ApplicationDbContext context,
         IHttpContextAccessor httpContextAccessor,
         TokenHandlerService tokenHandlerService)
@@ -22,7 +22,7 @@ internal class CreateServiceRequestCommandHandler : IRequestHandler<CreateServic
         _tokenHandlerService = tokenHandlerService;
     }
 
-    public async Task<OperationResult<Service>> Handle(CreateServiceRequestCommand request, CancellationToken cancellationToken)
+    public async Task<OperationResult<Service>> Handle(CreateServiceCommand request, CancellationToken cancellationToken)
     {
         var result = new OperationResult<Service>();
         var userName = GetCurrentUserName();
@@ -41,8 +41,7 @@ internal class CreateServiceRequestCommandHandler : IRequestHandler<CreateServic
 
         // Verify customer exists and is verified
         var customer = await _context.Customers
-            .Include(c => c.User)
-            .FirstOrDefaultAsync(c => c.Id == request.CustomerId && c.IsVerified, cancellationToken);
+            .FirstOrDefaultAsync(c => c.UserId == request.CustomerId, cancellationToken);
 
         if (customer == null)
         {

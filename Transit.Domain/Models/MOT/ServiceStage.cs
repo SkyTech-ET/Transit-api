@@ -27,6 +27,8 @@ public class ServiceStageExecution : BaseEntity
     public ICollection<StageDocument> Documents => _documents;
     public ICollection<StageComment> StageComments => _comments;
 
+    public DateTime CreatedDate { get; set; }
+
     public static ServiceStageExecution Create(
         long serviceId,
         Shared.ServiceStage stage,

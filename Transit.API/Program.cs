@@ -17,36 +17,39 @@ builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetAllUsersQuery).Assembly));
 
-builder.Services.AddControllers().AddJsonOptions(options =>
+
+builder.Services.AddControllers(config =>
 {
-    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
-});
+    config.Filters.Add(typeof(ExceptionHandler));
+})
+.AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 builder.Services.AddHostedService<LogCleanupService>();
-//builder.Services.AddTransient<ActionLogService>();
 
-// Database configuration based on environment
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+// --- DATABASE CONFIGURATION ---
+string connectionString;
+
+// Use Postgres in production, SQLite for local dev
 if (builder.Environment.IsProduction())
 {
     connectionString = builder.Configuration.GetConnectionString("ProductionConnection");
-}
-
-if (connectionString.Contains("Data Source="))
-{
-    // SQLite for development
     builder.Services.AddDbContext<ApplicationDbContext>(options =>
-        options.UseSqlite(connectionString)
+        options.UseNpgsql(connectionString)
     );
 }
 else
 {
-    // SQL Server for production
+    // SQLite for development
+    connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
     builder.Services.AddDbContext<ApplicationDbContext>(options =>
-        options.UseSqlServer(connectionString)
+        options.UseSqlite(connectionString)
     );
+
+
 }
 
+// --- CORS ---
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("MobileAppPolicy", policy =>
@@ -69,7 +72,7 @@ builder.Services.AddCors(options =>
     });
 });
 
-#region Service Installers
+// --- SERVICE INSTALLERS ---
 builder.Services.AddScoped<PasswordService>();
 builder.Services.AddScoped<TokenHandlerService>();
 builder.Services.AddScoped<EmailSenderService>();
@@ -81,14 +84,8 @@ builder.Services.AddScoped<IDataSeederService, DataSeederService>();
 builder.Services.AddScoped<Transit.API.TestScripts.EndToEndTest>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddDistributedMemoryCache();
-#endregion
 
-builder.Services.AddSession(options =>
-{
-    options.IOTimeout = TimeSpan.FromMinutes(10);
-});
-builder.Services.AddScoped<TokenHandlerService>();
-
+builder.Services.AddSession(options => options.IOTimeout = TimeSpan.FromMinutes(10));
 builder.Services.Configure<Settings>(builder.Configuration.GetSection("Settings"));
 
 builder.Services.AddMvc(setupAction: options =>
@@ -98,37 +95,29 @@ builder.Services.AddMvc(setupAction: options =>
 });
 builder.Services.AddOptions<EmailSettings>()
     .Bind(builder.Configuration.GetSection("EmailSettings"))
-    .ValidateDataAnnotations() // Add validation attributes to EmailSettings class
+    .ValidateDataAnnotations()
     .ValidateOnStart();
 
-builder.Services.AddControllers(config =>
-{
-    config.Filters.Add(typeof(ExceptionHandler));
-})
-.AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
-
-// JWT Settings Configuration
 var jwtSettings = new JwtSettings();
 builder.Configuration.Bind(nameof(JwtSettings), jwtSettings);
 var jwtSection = builder.Configuration.GetSection(nameof(JwtSettings));
 builder.Services.Configure<JwtSettings>(jwtSection);
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 var app = builder.Build();
-// Should match your URL path and physical directory
+
+// Static files for profile photos
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
         Path.Combine(builder.Environment.WebRootPath, "Profile_Photo")),
-    RequestPath = "/api/v1/Profile_Photo" // Must match URL segment
+    RequestPath = "/api/v1/Profile_Photo"
 });
+app.UseAuthentication();
 app.MapOpenApi();
 app.MapScalarApiReference();
 app.UseCors("MobileAppPolicy");
-
 app.UseStaticFiles();
 app.UseSession();
-
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
