@@ -36,10 +36,6 @@ public class DataEncoderController : BaseController
         var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
-
-        if (!await IsDataEncoder(currentUserId.Value))
-            return Forbid("Access denied. Data Encoder role required.");
-
         // Check if user already exists
         var existingUser = await _context.Customers
             .FirstOrDefaultAsync(u => u.Id == request.UserId);

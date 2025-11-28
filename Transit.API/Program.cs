@@ -1,12 +1,15 @@
-using Transit.Api.Filters;
-using Transit.Application.Options;
-using Transit.Domain.Data;
-using Transit.API.Services;
-using Transit.Application.DataSeeder;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
+using System.Text;
 using System.Text.Json.Serialization;
+using Transit.Api.Filters;
+using Transit.API.Services;
+using Transit.Application.DataSeeder;
+using Transit.Application.Options;
+using Transit.Domain.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -102,7 +105,22 @@ var jwtSettings = new JwtSettings();
 builder.Configuration.Bind(nameof(JwtSettings), jwtSettings);
 var jwtSection = builder.Configuration.GetSection(nameof(JwtSettings));
 builder.Services.Configure<JwtSettings>(jwtSection);
+// ----------------- JWT AUTHENTICATION -----------------
+var jwtConfig = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidIssuer = jwtSettings.Issuer,
+            ValidateAudience = true,
+            ValidAudience = jwtSettings.Audiences[0], // ✅ Correct
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SigningKey)) // ✅ Correct
+        };
+    });
 var app = builder.Build();
 
 // Static files for profile photos
