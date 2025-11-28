@@ -1,6 +1,7 @@
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Transit.Api;
 using Transit.Api.Contracts.MOT.Request;
 using Transit.Api.Contracts.MOT.Response;
 using Transit.API.DTO.MasterData;
@@ -83,38 +84,13 @@ public class ServiceController : BaseController
     /// <summary>
     /// Get all services with filtering and pagination
     /// </summary>
-    [HttpGet("GetAll")]
-    public async Task<IActionResult> GetAll(
-        [FromQuery] ServiceStatus? status = null,
-        [FromQuery] ServiceType? serviceType = null,
-        [FromQuery] RiskLevel? riskLevel = null,
-        [FromQuery] long? customerId = null,
-        [FromQuery] long? caseExecutorId = null,
-        [FromQuery] long? assessorId = null,
-        [FromQuery] string? search = null,
-        [FromQuery] int page = 1,
-        [FromQuery] int pageSize = 20)
+    [HttpGet("GetAll/{recordStatus}")]
+    public async Task<IActionResult> GetAll(RecordStatus? recordStatus)
     {
-        var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
-        if (currentUserId == null)
-            return Unauthorized("User not authenticated");
-
-        var query = new GetAllServicesQuery
-        {
-            Status = status,
-            ServiceType = serviceType,
-            RiskLevel = riskLevel,
-            CustomerId = customerId,
-            CaseExecutorId = caseExecutorId,
-            AssessorId = assessorId,
-            Search = search,
-            Page = page,
-            PageSize = pageSize
-        };
-
+        var query = new GetAllServicesQuery { RecordStatus = recordStatus };
         var result = await _mediator.Send(query);
-
-        return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(result.Payload);
+        var rolesList = result.Payload.Adapt<List<ServiceDetail>>();
+        return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(rolesList);
     }
 
     /// <summary>

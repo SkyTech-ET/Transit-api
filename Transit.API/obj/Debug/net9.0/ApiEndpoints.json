@@ -335,7 +335,12 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "status",
+        "Name": "UserId",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "recordStatus",
         "Type": "System.String",
         "IsRequired": false
       }
@@ -1768,55 +1773,15 @@
   {
     "ContainingType": "Transit.API.Controllers.MOT.ServiceController",
     "Method": "GetAll",
-    "RelativePath": "api/v1/Service/GetAll",
+    "RelativePath": "api/v1/Service/GetAll/{recordStatus}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "status",
+        "Name": "recordStatus",
         "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "serviceType",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "riskLevel",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "customerId",
-        "Type": "System.Nullable\u00601[[System.Int64, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "caseExecutorId",
-        "Type": "System.Nullable\u00601[[System.Int64, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "assessorId",
-        "Type": "System.Nullable\u00601[[System.Int64, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "search",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "page",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "pageSize",
-        "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

@@ -1,14 +1,15 @@
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Transit.Api.Contracts.MOT.Request;
+using Transit.Api.Contracts.MOT.Response;
+using Transit.API.Helpers;
+using Transit.Application;
+using Transit.Application.Queries;
+using Transit.Controllers;
 using Transit.Domain.Data;
 using Transit.Domain.Models.MOT;
 using Transit.Domain.Models.Shared;
-using Microsoft.EntityFrameworkCore;
-using Transit.Controllers;
-using Transit.API.Helpers;
-using Transit.Application;
-using Transit.Api.Contracts.MOT.Request;
-using Transit.Api.Contracts.MOT.Response;
-using Mapster;
 
 namespace Transit.API.Controllers.MOT;
 
@@ -56,30 +57,12 @@ public class CustomerController : BaseController
     /// Get all services for the current customer
     /// </summary>
     [HttpGet("GetMyServices")]
-    public async Task<IActionResult> GetMyServices([FromQuery] ServiceStatus? status = null)
+    public async Task<IActionResult> GetMyServices([FromQuery] long UserId, RecordStatus? recordStatus)
     {
-        var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
-        if (currentUserId == null)
-            return Unauthorized("User not authenticated");
-
-        // Get customer for current user
-        var customer = await _context.Customers
-            .FirstOrDefaultAsync(c => c.UserId == currentUserId.Value);
-
-        if (customer == null)
-            return BadRequest("Customer profile not found");
-
-        var query = _context.Services
-            .Include(s => s.Stages)
-            .Include(s => s.Documents)
-            .Where(s => s.CustomerId == customer.Id); // Use customer.Id, not customer.UserId
-
-        if (status.HasValue)
-            query = query.Where(s => s.Status == status.Value);
-
-        var services = await query.ToListAsync();
-
-        return HandleSuccessResponse(services);
+        var query = new GetMyServicesQuery{ UserId=UserId, RecordStatus = recordStatus };
+        var result = await _mediator.Send(query);
+        var rolesList = result.Payload.Adapt<List<ServiceDetail>>();
+        return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(rolesList);
     }
 
     /// <summary>

@@ -3,74 +3,40 @@ using Transit.Domain.Models.MOT;
 using Transit.Domain.Models.Shared;
 
 namespace Transit.Application;
-
-internal class GetAllServicesQueryHandler : IRequestHandler<GetAllServicesQuery, OperationResult<ServiceListResponse>>
+internal class GetAllServicesQueryHandler : IRequestHandler<GetAllServicesQuery, OperationResult<List<Service>>>
 {
     private readonly ApplicationDbContext _context;
-
     public GetAllServicesQueryHandler(ApplicationDbContext context)
     {
         _context = context;
     }
-
-    public async Task<OperationResult<ServiceListResponse>> Handle(GetAllServicesQuery request, CancellationToken cancellationToken)
+    public async Task<OperationResult<List<Service>>> Handle(GetAllServicesQuery request, CancellationToken cancellationToken)
     {
-        var result = new OperationResult<ServiceListResponse>();
-
-        var query = _context.Services
-            .Include(s => s.Customer)
-            .Include(s => s.AssignedCaseExecutor)
-            .Include(s => s.AssignedAssessor)
-            .Include(s => s.CreatedByUserId)
-            .Include(s => s.Stages)
-            .Include(s => s.Documents)
-            .AsQueryable();
-
-        // Apply filters
-        if (request.Status.HasValue)
-            query = query.Where(s => s.Status == request.Status.Value);
-
-        if (request.ServiceType.HasValue)
-            query = query.Where(s => s.ServiceType == request.ServiceType.Value);
-
-        if (request.RiskLevel.HasValue)
-            query = query.Where(s => s.RiskLevel == request.RiskLevel.Value);
-
-        if (request.CustomerId.HasValue)
-            query = query.Where(s => s.CustomerId == request.CustomerId.Value);
-
-        if (request.CaseExecutorId.HasValue)
-            query = query.Where(s => s.AssignedCaseExecutorId == request.CaseExecutorId.Value);
-
-        if (request.AssessorId.HasValue)
-            query = query.Where(s => s.AssignedAssessorId == request.AssessorId.Value);
-
-        if (!string.IsNullOrEmpty(request.Search))
+        var result = new OperationResult<List<Service>>();
+        try
         {
-            query = query.Where(s => 
-                s.ServiceNumber.Contains(request.Search) ||
-                s.ItemDescription.Contains(request.Search));
+            var services = await _context.Services.OrderByDescending(o => o.StartDate).ToListAsync();
+
+            if (request.RecordStatus == RecordStatus.Active)
+                services = services.Where(u => u.RecordStatus == Domain.Models.Shared.RecordStatus.Active).ToList();
+            else if (request.RecordStatus == RecordStatus.InActive)
+                services = services.Where(u => u.RecordStatus == Domain.Models.Shared.RecordStatus.InActive).ToList();
+            else if (request.RecordStatus == RecordStatus.Deleted)
+                services = services.Where(u => u.RecordStatus == Domain.Models.Shared.RecordStatus.Deleted).ToList();
+
+            if (services.Count == 0)
+            {
+                result.AddError(ErrorCode.Ok, "No Service Data!");
+                return result;
+            }
+            result.Payload = services;
+            return result;
+
         }
-
-        var totalCount = await query.CountAsync(cancellationToken);
-        var services = await query
-            .OrderByDescending(s => s.RegisteredDate)
-            .Skip((request.Page - 1) * request.PageSize)
-            .Take(request.PageSize)
-            .ToListAsync(cancellationToken);
-
-        var paginatedResult = new ServiceListResponse
+        catch (Exception ex)
         {
-            Data = services,
-            TotalCount = totalCount,
-            Page = request.Page,
-            PageSize = request.PageSize,
-            TotalPages = (int)Math.Ceiling((double)totalCount / request.PageSize)
-        };
-
-        result.Payload = paginatedResult;
-        result.Message = "Operation success";
+            result.AddError(ErrorCode.ServerError, ex.Message);
+        }
         return result;
     }
 }
-
