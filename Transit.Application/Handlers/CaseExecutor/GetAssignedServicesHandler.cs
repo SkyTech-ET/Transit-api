@@ -4,27 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Transit.Application.Queries;
-using Transit.Domain.Models;
 using Transit.Domain.Models.MOT;
 using Transit.Domain.Models.Shared;
 
-
-namespace Transit.Application;
-internal class GetMyServiceHandler : IRequestHandler<GetMyServicesQuery, OperationResult<List<Service>>>
+namespace Transit.Application.Handlers;
+internal class GetAssignedServicesHandler : IRequestHandler<GetAssignedServicesQuery, OperationResult<List<Service>>>
 {
     private readonly ApplicationDbContext _context;
-    public GetMyServiceHandler(ApplicationDbContext context)
+    public GetAssignedServicesHandler(ApplicationDbContext context)
     {
         _context = context;
     }
-    public async Task<OperationResult<List<Service>>> Handle(GetMyServicesQuery request, CancellationToken cancellationToken)
+    public async Task<OperationResult<List<Service>>> Handle(GetAssignedServicesQuery request, CancellationToken cancellationToken)
     {
         var result = new OperationResult<List<Service>>();
         try
         {
             //var services = await _context.Services.OrderByDescending(o => o.StartDate).ToListAsync();
             var servicesQuery = _context.Services
-                                      .Where(s => s.CustomerId == request.UserId) 
+                                      .Where(s => s.AssignedCaseExecutorId == request.AssignedCaseExecutorId)
                                       .OrderByDescending(s => s.StartDate)
                                       .AsQueryable();
 

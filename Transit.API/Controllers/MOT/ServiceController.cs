@@ -7,6 +7,7 @@ using Transit.Api.Contracts.MOT.Response;
 using Transit.API.DTO.MasterData;
 using Transit.API.Helpers;
 using Transit.Application;
+using Transit.Application.Handlers;
 using Transit.Controllers;
 using Transit.Domain.Data;
 using Transit.Domain.Models.MOT;
@@ -97,19 +98,14 @@ public class ServiceController : BaseController
     /// Get service by ID
     /// </summary>
     [HttpGet("GetById")]
-    public async Task<IActionResult> GetById(long id)
+    public async Task<IActionResult> GetById(long Id)
     {
-        var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
-        if (currentUserId == null)
-            return Unauthorized("User not authenticated");
-
-        var query = new GetServiceByIdQuery { Id = id };
+        var query = new GetServiceById(Id);
         var result = await _mediator.Send(query);
-
-        return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(result.Payload);
+        var rolesList = result.Payload.Adapt<ServiceDetail>();
+        return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(rolesList);
     }
 
- 
 
     /// <summary>
     /// Update service

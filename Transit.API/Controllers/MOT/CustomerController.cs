@@ -66,39 +66,6 @@ public class CustomerController : BaseController
     }
 
     /// <summary>
-    /// Get service details with full workflow timeline
-    /// </summary>
-    [HttpGet("GetServiceById")]
-    public async Task<IActionResult> GetServiceById([FromQuery] long serviceId)
-    {
-        var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
-        if (currentUserId == null)
-            return Unauthorized("User not authenticated");
-
-        // Get customer for current user
-        var customer = await _context.Customers
-            .FirstOrDefaultAsync(c => c.UserId == currentUserId.Value);
-
-        if (customer == null)
-            return BadRequest("Customer profile not found");
-
-        var service = await _context.Services
-            .Include(s => s.Stages)
-                .ThenInclude(stage => stage.StageComments)
-            .Include(s => s.Stages)
-                .ThenInclude(stage => stage.Documents)
-            .Include(s => s.Documents)
-            .Include(s => s.Messages)
-            .Include(s => s.AssignedCaseExecutor)
-            .FirstOrDefaultAsync(s => s.Id == serviceId && s.CustomerId == customer.Id); // Use customer.Id
-
-        if (service == null)
-            return NotFound("Service not found");
-
-        return HandleSuccessResponse(service);
-    }
-
-    /// <summary>
     /// Upload document for a service stage
     /// </summary>
     [HttpPost("UploadStageDocument")]

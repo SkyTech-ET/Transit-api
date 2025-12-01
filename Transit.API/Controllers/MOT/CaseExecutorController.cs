@@ -1,14 +1,15 @@
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Transit.Api.Contracts.MOT.Request;
+using Transit.Api.Contracts.MOT.Response;
+using Transit.API.Helpers;
+using Transit.Application;
+using Transit.Application.Queries;
+using Transit.Controllers;
 using Transit.Domain.Data;
 using Transit.Domain.Models.MOT;
 using Transit.Domain.Models.Shared;
-using Microsoft.EntityFrameworkCore;
-using Transit.Controllers;
-using Transit.API.Helpers;
-using Transit.Application;
-using Transit.Api.Contracts.MOT.Request;
-using Transit.Api.Contracts.MOT.Response;
-using Mapster;
 
 namespace Transit.API.Controllers.MOT;
 
@@ -29,62 +30,28 @@ public class CaseExecutorController : BaseController
     /// Get assigned services for the case executor
     /// </summary>
     [HttpGet("GetAssignedServices")]
-    public async Task<IActionResult> GetAssignedServices(
-        [FromQuery] ServiceStatus? status = null,
-        [FromQuery] ServiceType? type = null)
+    public async Task<IActionResult> GetAssignedServices([FromQuery] long AssignedCaseExecutorId, RecordStatus? recordStatus)
     {
-        var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
-        if (currentUserId == null)
-            return Unauthorized("User not authenticated");
-
-        if (!await IsCaseExecutor(currentUserId.Value))
-            return Forbid("Access denied. Case Executor role required.");
-
-        var query = _context.Services
-            .Include(s => s.Customer)
-            .Include(s => s.Stages)
-            .Where(s => s.AssignedCaseExecutorId == currentUserId.Value);
-
-        if (status.HasValue)
-            query = query.Where(s => s.Status == status.Value);
-
-        if (type.HasValue)
-            query = query.Where(s => s.ServiceType == type.Value);
-
-        var services = await query
-            .OrderByDescending(s => s.RegisteredDate)
-            .ToListAsync();
-
-        return HandleSuccessResponse(services);
+        var query = new GetAssignedServicesQuery { AssignedCaseExecutorId = AssignedCaseExecutorId, RecordStatus = recordStatus };
+        var result = await _mediator.Send(query);
+        var rolesList = result.Payload.Adapt<List<ServiceDetail>>();
+        return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(rolesList);
     }
 
     /// <summary>
     /// Get service details for execution
     /// </summary>
-    [HttpGet("GetServiceById")]
-    public async Task<IActionResult> GetServiceById([FromQuery] long serviceId)
+    [HttpGet("GetAssignedServiceById")]
+    public async Task<IActionResult> GetAssignedServiceById([FromQuery] long Id)
     {
         var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
 
-        if (!await IsCaseExecutor(currentUserId.Value))
-            return Forbid("Access denied. Case Executor role required.");
-
-        var service = await _context.Services
-            .Include(s => s.Customer)
-            .Include(s => s.Stages)
-                .ThenInclude(stage => stage.StageComments)
-            .Include(s => s.Stages)
-                .ThenInclude(stage => stage.Documents)
-            .Include(s => s.Documents)
-            .Include(s => s.Messages)
-            .FirstOrDefaultAsync(s => s.Id == serviceId && s.AssignedCaseExecutorId == currentUserId.Value);
-
-        if (service == null)
-            return NotFound("Service not found or not assigned to you");
-
-        return HandleSuccessResponse(service);
+        var query = new GetCaseExecutorAssignedServicesByIdQuery { AssignedCaseExecutorId = currentUserId.Value, Id = Id };
+        var result = await _mediator.Send(query);
+       // var rolesList = result.Payload.Adapt<List<ServiceDetail>>();
+        return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(result.Payload);
     }
 
     /// <summary>
