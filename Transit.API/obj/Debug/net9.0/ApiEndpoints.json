@@ -1708,8 +1708,8 @@
   },
   {
     "ContainingType": "Transit.API.Controllers.MOT.ServiceController",
-    "Method": "Assign",
-    "RelativePath": "api/v1/Service/Assign",
+    "Method": "AssignServices",
+    "RelativePath": "api/v1/Service/AssignServices",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,

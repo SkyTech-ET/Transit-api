@@ -31,6 +31,9 @@ public class Service : BaseEntity
     public ICollection<ServiceStageExecution> Stages => _stages;
     public ICollection<ServiceDocument> Documents => _documents;
     public ICollection<ServiceMessage> Messages => _messages;
+
+    public string AssignmentNotes { get; set; }
+
     public static Service Create(
         string serviceNumber,
         string itemDescription,

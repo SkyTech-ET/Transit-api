@@ -8,7 +8,7 @@ public class AssignServiceCommand : IRequest<OperationResult<Service>>
     public long AssignedCaseExecutorId { get; set; }
     public long? AssignedAssessorId { get; set; }
     public string? AssignmentNotes { get; set; }
-    public long AssignedByUserId { get; set; }
+    public long? AssignedByUserId { get; set; }
 }
 
 

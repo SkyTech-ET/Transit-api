@@ -25,23 +25,13 @@ internal class AssignServiceCommandHandler : IRequestHandler<AssignServiceComman
     public async Task<OperationResult<Service>> Handle(AssignServiceCommand request, CancellationToken cancellationToken)
     {
         var result = new OperationResult<Service>();
-        var userName = GetCurrentUserName();
-        if (string.IsNullOrEmpty(userName))
-        {
-            userName = "";
-        }
-        long userId = 0;
-        if (userName.Length > 0)
-        {
-            var existingUsers = await _context.Users
-                      .FirstOrDefaultAsync(x => x.Username == userName);
-            if (existingUsers != null)
-                userId = existingUsers.Id;
-        }
 
         // Verify service exists
         var service = await _context.Services
             .Include(s => s.Customer)
+            .Include(s => s.AssignedCaseExecutor)
+            .Include(s => s.AssignedAssessor)
+            .Include(s => s.Stages)
             .FirstOrDefaultAsync(s => s.Id == request.ServiceId, cancellationToken);
 
         if (service == null)
@@ -60,38 +50,37 @@ internal class AssignServiceCommandHandler : IRequestHandler<AssignServiceComman
             return result;
         }
 
-        // Assign service
+        // Assign Case Executor
         service.AssignCaseExecutor(request.AssignedCaseExecutorId);
+
+        // Assign Assessor if provided
         if (request.AssignedAssessorId.HasValue)
         {
+            var assessor = await _context.Users
+                .FirstOrDefaultAsync(u => u.Id == request.AssignedAssessorId.Value, cancellationToken);
+
+            if (assessor == null)
+            {
+                result.AddError(ErrorCode.NotFound, "Assessor not found.");
+                return result;
+            }
+
             service.AssignAssessor(request.AssignedAssessorId.Value);
         }
+
+        // Optionally store assignment notes
+        if (!string.IsNullOrWhiteSpace(request.AssignmentNotes))
+        {
+            service.AssignmentNotes = request.AssignmentNotes.Trim();
+        }
+
+        // Update service status
         service.UpdateStatus(ServiceStatus.InProgress);
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        // Reload service with relationships
-        var updatedService = await _context.Services
-            .Include(s => s.Customer)
-            .Include(s => s.AssignedCaseExecutor)
-            .Include(s => s.AssignedAssessor)
-            .Include(s => s.Stages)
-            .FirstOrDefaultAsync(s => s.Id == request.ServiceId, cancellationToken);
-
-        if (updatedService == null)
-        {
-            result.AddError(ErrorCode.NotFound, "Service not found after assignment.");
-            return result;
-        }
-
-        result.Payload = updatedService;
-        result.Message = "Operation success";
-
-        var options = new JsonSerializerOptions
-        {
-            ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve,
-            WriteIndented = true
-        };
+        result.Payload = service;
+        result.Message = "Service assignment successful.";
 
         return result;
     }

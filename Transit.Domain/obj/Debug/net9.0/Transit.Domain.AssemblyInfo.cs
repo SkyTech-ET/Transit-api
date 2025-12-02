@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Transit.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e3b6741b6f7250137494a54da8994285d1be9c1a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+17cebf793ea042b55e3e7e3a62c8f69e13ec6f7c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Transit.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Transit.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

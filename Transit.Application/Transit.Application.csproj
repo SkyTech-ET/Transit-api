@@ -30,4 +30,8 @@
 		<ProjectReference Include="..\Transit.Domain\Transit.Domain.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Commands\Assessor\" />
+	</ItemGroup>
+
 </Project>

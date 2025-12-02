@@ -173,53 +173,16 @@ public class ServiceController : BaseController
     /// <summary>
     /// Assign service to case executor or assessor
     /// </summary>
-    [HttpPut("Assign")]
-    public async Task<IActionResult> Assign([FromBody] AssignServiceRequest request)
+    [HttpPut("AssignServices")]
+    public async Task<IActionResult> AssignServices([FromBody] AssignServiceRequest request)
     {
         var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
+        var command = request.Adapt<AssignServiceCommand>();
 
-        // Verify the assigned user exists and has the correct role
-        var user = await _context.Users
-            .Include(u => u.UserRoles)
-            .ThenInclude(ur => ur.Role)
-            .FirstOrDefaultAsync(u => u.Id == request.UserId);
-
-        if (user == null)
-            return NotFound("User not found");
-
-        long? caseExecutorId = null;
-        long? assessorId = null;
-
-        if (request.Role == "caseExecutor")
-        {
-            var isCaseExecutor = user.UserRoles.Any(ur => ur.Role.Name == "CaseExecutor");
-            if (!isCaseExecutor)
-                return BadRequest("User is not a case executor");
-
-            caseExecutorId = request.UserId;
-        }
-        else if (request.Role == "assessor")
-        {
-            var isAssessor = user.UserRoles.Any(ur => ur.Role.Name == "Assessor");
-            if (!isAssessor)
-                return BadRequest("User is not an assessor");
-
-            assessorId = request.UserId;
-        }
-        else
-        {
-            return BadRequest("Invalid role. Must be 'caseExecutor' or 'assessor'");
-        }
-
-        var command = new AssignServiceCommand
-        {
-            ServiceId = request.ServiceId,
-            AssignedCaseExecutorId = caseExecutorId ?? 0,
-            AssignedAssessorId = assessorId,
-            AssignedByUserId = currentUserId.Value
-        };
+        // Assign the current user ID
+        command.AssignedAssessorId = currentUserId.Value;
 
         var result = await _mediator.Send(command);
 
