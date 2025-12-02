@@ -171,7 +171,7 @@ public class ServiceController : BaseController
     }
 
     /// <summary>
-    /// Assign service to case executor or assessor
+    /// Assign service to case executor
     /// </summary>
     [HttpPut("AssignServices")]
     public async Task<IActionResult> AssignServices([FromBody] AssignServiceRequest request)
