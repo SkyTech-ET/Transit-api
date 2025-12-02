@@ -32,7 +32,7 @@ public class Service : BaseEntity
     public ICollection<ServiceDocument> Documents => _documents;
     public ICollection<ServiceMessage> Messages => _messages;
 
-    public string AssignmentNotes { get; set; }
+    public string AssignmentNotes { get; set; } = string.Empty;
 
     public static Service Create(
         string serviceNumber,
