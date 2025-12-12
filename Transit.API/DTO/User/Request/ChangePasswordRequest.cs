@@ -1,4 +1,4 @@
-﻿namespace Transit.Api.Contracts;
+namespace Transit.Api.Contracts;
 public class ChangePasswordRequest
 {
     public string Username { get; set; }

@@ -1,4 +1,4 @@
-﻿
+
 using Transit.Api.Contracts.Common;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;

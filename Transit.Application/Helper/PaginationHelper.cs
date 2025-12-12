@@ -1,4 +1,4 @@
-﻿namespace Transit.Application;
+namespace Transit.Application;
 
 public static class PaginationHelper
 {

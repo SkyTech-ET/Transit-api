@@ -1,4 +1,4 @@
-﻿using Transit.Domain;
+using Transit.Domain;
 using Transit.Domain.Models.MOT;
 using System.Text.Json;
 

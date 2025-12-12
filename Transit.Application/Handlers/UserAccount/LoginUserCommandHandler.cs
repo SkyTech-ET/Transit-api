@@ -1,4 +1,4 @@
-﻿using Transit.Domain.Models.Shared;
+using Transit.Domain.Models.Shared;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text.Json;

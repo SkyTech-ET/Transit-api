@@ -1,4 +1,4 @@
-﻿namespace Transit.Domain.Models.Shared;
+namespace Transit.Domain.Models.Shared;
 
 public enum RecordStatus
 {

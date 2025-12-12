@@ -1,4 +1,4 @@
-﻿using Transit.Domain.Models.Shared;
+using Transit.Domain.Models.Shared;
 
 namespace Transit.Application;
 internal class GetAllPrivilegesQueryHandler : IRequestHandler<GetAllPrivilegesQuery, OperationResult<List<Privilege>>>

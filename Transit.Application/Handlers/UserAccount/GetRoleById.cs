@@ -1,4 +1,4 @@
-﻿namespace Transit.Application;
+namespace Transit.Application;
 public record GetRoleById(long id) : IRequest<OperationResult<Role>>;
 internal class GetRoleByIdHandler : IRequestHandler<GetRoleById, OperationResult<Role>>
 {

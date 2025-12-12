@@ -1,4 +1,4 @@
-﻿namespace Transit.Application.Services;
+namespace Transit.Application.Services;
 
 public class PasswordService
 {

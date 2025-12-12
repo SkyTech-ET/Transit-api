@@ -1,4 +1,4 @@
-﻿
+
 namespace Transit.Application.Options
 {
     public class JwtSettings

@@ -1,4 +1,4 @@
-﻿namespace Transit.Application.AuthenticateAuthorize.Command;
+namespace Transit.Application.AuthenticateAuthorize.Command;
 
 public class ValidateEmailTokenCommand : IRequest<OperationResult<bool>>
 {

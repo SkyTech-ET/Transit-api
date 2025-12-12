@@ -1,4 +1,4 @@
-﻿using Transit.Api.Contracts.Common;
+using Transit.Api.Contracts.Common;
 using System.Net;
 using Error = Transit.Application.Error;
 

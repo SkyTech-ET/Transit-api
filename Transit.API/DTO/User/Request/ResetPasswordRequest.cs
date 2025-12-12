@@ -1,4 +1,4 @@
-﻿namespace Transit.Api;
+namespace Transit.Api;
 public class ResetPasswordRequest
 {
     public string UserName { get; set; }

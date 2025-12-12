@@ -1,4 +1,4 @@
-﻿using Transit.Domain.Models.Shared;
+using Transit.Domain.Models.Shared;
 using System.Text.Json;
 
 namespace Transit.Application;

@@ -235,22 +235,6 @@
   },
   {
     "ContainingType": "Transit.API.Controllers.MOT.CaseExecutorController",
-    "Method": "UpdateStageStatus",
-    "RelativePath": "api/v1/CaseExecutor/UpdateStageStatus",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "Transit.Api.Contracts.MOT.Request.UpdateStageStatusRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Transit.API.Controllers.MOT.CaseExecutorController",
     "Method": "UploadStageDocument",
     "RelativePath": "api/v1/CaseExecutor/UploadStageDocument",
     "HttpMethod": "POST",
@@ -258,52 +242,32 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "serviceId",
+        "Name": "ServiceId",
         "Type": "System.Int64",
         "IsRequired": false
       },
       {
-        "Name": "stageId",
+        "Name": "StageId",
         "Type": "System.Int64",
         "IsRequired": false
       },
       {
-        "Name": "ContentType",
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "FilePath",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "ContentDisposition",
+        "Name": "DocumentType",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "Headers",
-        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
-        "IsRequired": false
-      },
-      {
-        "Name": "Length",
-        "Type": "System.Int64",
-        "IsRequired": false
-      },
-      {
-        "Name": "Name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "FileName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "documentType",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "description",
+        "Name": "Description",
         "Type": "System.String",
         "IsRequired": false
       }
@@ -566,360 +530,6 @@
       {
         "Name": "request",
         "Type": "Transit.Api.Contracts.MOT.Request.UpdateCustomerRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Transit.API.Controllers.MOT.DocumentController",
-    "Method": "DeleteCustomerDocument",
-    "RelativePath": "api/v1/Document/DeleteCustomerDocument",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "documentId",
-        "Type": "System.Int64",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Transit.API.Controllers.MOT.DocumentController",
-    "Method": "DeleteServiceDocument",
-    "RelativePath": "api/v1/Document/DeleteServiceDocument",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "documentId",
-        "Type": "System.Int64",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Transit.API.Controllers.MOT.DocumentController",
-    "Method": "DeleteStageDocument",
-    "RelativePath": "api/v1/Document/DeleteStageDocument",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "documentId",
-        "Type": "System.Int64",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Transit.API.Controllers.MOT.DocumentController",
-    "Method": "DownloadDocument",
-    "RelativePath": "api/v1/Document/DownloadDocument",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "documentId",
-        "Type": "System.Int64",
-        "IsRequired": false
-      },
-      {
-        "Name": "category",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Transit.API.Controllers.MOT.DocumentController",
-    "Method": "GetCustomerDocumentById",
-    "RelativePath": "api/v1/Document/GetCustomerDocumentById",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "documentId",
-        "Type": "System.Int64",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Transit.API.Controllers.MOT.DocumentController",
-    "Method": "GetCustomerDocuments",
-    "RelativePath": "api/v1/Document/GetCustomerDocuments",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "customerId",
-        "Type": "System.Int64",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Transit.API.Controllers.MOT.DocumentController",
-    "Method": "GetServiceDocumentById",
-    "RelativePath": "api/v1/Document/GetServiceDocumentById",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "documentId",
-        "Type": "System.Int64",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Transit.API.Controllers.MOT.DocumentController",
-    "Method": "GetServiceDocuments",
-    "RelativePath": "api/v1/Document/GetServiceDocuments",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "serviceId",
-        "Type": "System.Int64",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Transit.API.Controllers.MOT.DocumentController",
-    "Method": "GetStageDocumentById",
-    "RelativePath": "api/v1/Document/GetStageDocumentById",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "documentId",
-        "Type": "System.Int64",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Transit.API.Controllers.MOT.DocumentController",
-    "Method": "GetStageDocuments",
-    "RelativePath": "api/v1/Document/GetStageDocuments",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "serviceStageId",
-        "Type": "System.Int64",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Transit.API.Controllers.MOT.DocumentController",
-    "Method": "UploadCustomerDocument",
-    "RelativePath": "api/v1/Document/UploadCustomerDocument",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "customerId",
-        "Type": "System.Int64",
-        "IsRequired": false
-      },
-      {
-        "Name": "ContentType",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ContentDisposition",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Headers",
-        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
-        "IsRequired": false
-      },
-      {
-        "Name": "Length",
-        "Type": "System.Int64",
-        "IsRequired": false
-      },
-      {
-        "Name": "Name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "FileName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "documentType",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "description",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Transit.API.Controllers.MOT.DocumentController",
-    "Method": "UploadServiceDocument",
-    "RelativePath": "api/v1/Document/UploadServiceDocument",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "serviceId",
-        "Type": "System.Int64",
-        "IsRequired": false
-      },
-      {
-        "Name": "ContentType",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ContentDisposition",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Headers",
-        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
-        "IsRequired": false
-      },
-      {
-        "Name": "Length",
-        "Type": "System.Int64",
-        "IsRequired": false
-      },
-      {
-        "Name": "Name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "FileName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "documentType",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "serviceStageId",
-        "Type": "System.Nullable\u00601[[System.Int64, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "description",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Transit.API.Controllers.MOT.DocumentController",
-    "Method": "UploadStageDocument",
-    "RelativePath": "api/v1/Document/UploadStageDocument",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "serviceStageId",
-        "Type": "System.Int64",
-        "IsRequired": false
-      },
-      {
-        "Name": "ContentType",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ContentDisposition",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Headers",
-        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
-        "IsRequired": false
-      },
-      {
-        "Name": "Length",
-        "Type": "System.Int64",
-        "IsRequired": false
-      },
-      {
-        "Name": "Name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "FileName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "documentType",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "description",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Transit.API.Controllers.MOT.DocumentController",
-    "Method": "VerifyDocument",
-    "RelativePath": "api/v1/Document/VerifyDocument",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "Transit.Api.Contracts.MOT.Request.VerifyDocumentRequest",
         "IsRequired": true
       }
     ],
@@ -1666,22 +1276,6 @@
   },
   {
     "ContainingType": "Transit.Controllers.RolesController",
-    "Method": "GetRolesByUser",
-    "RelativePath": "api/v1/Roles/GetRolesByUser/{userId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userId",
-        "Type": "System.Int64",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Transit.Controllers.RolesController",
     "Method": "Update",
     "RelativePath": "api/v1/Roles/Update",
     "HttpMethod": "PUT",
@@ -1708,8 +1302,8 @@
   },
   {
     "ContainingType": "Transit.API.Controllers.MOT.ServiceController",
-    "Method": "AssignServices",
-    "RelativePath": "api/v1/Service/AssignServices",
+    "Method": "Assign",
+    "RelativePath": "api/v1/Service/Assign",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -1757,7 +1351,7 @@
   {
     "ContainingType": "Transit.API.Controllers.MOT.ServiceController",
     "Method": "GetAll",
-    "RelativePath": "api/v1/Service/GetAll/{recordStatus}",
+    "RelativePath": "api/v1/Service/GetAll",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1765,7 +1359,7 @@
       {
         "Name": "recordStatus",
         "Type": "System.String",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -1779,7 +1373,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Id",
+        "Name": "id",
         "Type": "System.Int64",
         "IsRequired": false
       }

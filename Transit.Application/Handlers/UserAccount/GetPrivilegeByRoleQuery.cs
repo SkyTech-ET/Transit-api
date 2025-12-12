@@ -1,4 +1,4 @@
-﻿namespace Transit.Application.Handlers.UserAccount;
+namespace Transit.Application.Handlers.UserAccount;
 public record GetPrivilegeByRoleQuery(long roleId) : IRequest<OperationResult<List<Privilege>>>;
 internal class GetPrivilegeByRoleQueryHandler : IRequestHandler<GetPrivilegeByRoleQuery, OperationResult<List<Privilege>>>
 {

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +24,7 @@ internal class GetMyServiceHandler : IRequestHandler<GetMyServicesQuery, Operati
         {
             //var services = await _context.Services.OrderByDescending(o => o.StartDate).ToListAsync();
             var servicesQuery = _context.Services
-                                      .Where(s => s.CustomerId == request.UserId) 
+                                      .Where(s => s.CustomerId == request.CustomerId) 
                                       .OrderByDescending(s => s.StartDate)
                                       .AsQueryable();
 

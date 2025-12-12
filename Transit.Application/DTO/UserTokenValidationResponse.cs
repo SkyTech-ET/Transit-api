@@ -1,4 +1,4 @@
-﻿namespace Transit.Application.Dtos;
+namespace Transit.Application.Dtos;
 
 public class UserTokenValidationResponse
 {

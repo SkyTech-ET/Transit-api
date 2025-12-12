@@ -1,4 +1,4 @@
-﻿namespace Transit.Application;
+namespace Transit.Application;
 
 public record PrivilegeSeeder(List<PrivilegeDto> PrivilegeDtos) : IRequest<OperationResult<Unit>>;
 internal class PrivilegeSeederHandler : IRequestHandler<PrivilegeSeeder, OperationResult<Unit>>

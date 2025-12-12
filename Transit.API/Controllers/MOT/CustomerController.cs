@@ -59,7 +59,7 @@ public class CustomerController : BaseController
     [HttpGet("GetMyServices")]
     public async Task<IActionResult> GetMyServices([FromQuery] long UserId, RecordStatus? recordStatus)
     {
-        var query = new GetMyServicesQuery{ UserId=UserId, RecordStatus = recordStatus };
+        var query = new GetMyServicesQuery{ CustomerId = UserId, RecordStatus = recordStatus };
         var result = await _mediator.Send(query);
         var rolesList = result.Payload.Adapt<List<ServiceDetail>>();
         return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(rolesList);

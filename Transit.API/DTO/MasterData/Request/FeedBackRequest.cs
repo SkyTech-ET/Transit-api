@@ -1,4 +1,4 @@
-﻿namespace Transit.API;
+namespace Transit.API;
 
 public class FeedBackRequest
 {

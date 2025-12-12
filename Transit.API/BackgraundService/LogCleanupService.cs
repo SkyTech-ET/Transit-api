@@ -1,4 +1,4 @@
-﻿using Transit.Domain.Data;
+using Transit.Domain.Data;
 using Microsoft.Extensions.DependencyInjection;
 
 public class LogCleanupService : BackgroundService

@@ -1,4 +1,4 @@
-﻿global using MediatR;
+global using MediatR;
 global using Microsoft.AspNetCore.Http;
 global using Microsoft.EntityFrameworkCore;
 global using Transit.Application.Common;

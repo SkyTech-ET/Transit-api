@@ -1,4 +1,4 @@
-﻿namespace Transit.Domain;
+namespace Transit.Domain;
 
 public class UserRole : BaseEntity
 {

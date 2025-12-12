@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 
 namespace Transit.Application;
 public record ResetPasswordCommand(string UserName, string Password) : IRequest<OperationResult<Unit>>;

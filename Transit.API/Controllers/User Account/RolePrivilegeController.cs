@@ -1,4 +1,4 @@
-﻿using Transit.Api;
+using Transit.Api;
 using Transit.Domain.Models.Shared;
 
 

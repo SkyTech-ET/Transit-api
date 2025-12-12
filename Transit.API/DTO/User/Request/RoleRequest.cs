@@ -1,4 +1,4 @@
-﻿using Transit.Domain.Models.Shared;
+using Transit.Domain.Models.Shared;
 using System.ComponentModel.DataAnnotations;
 namespace Transit.Api
 {

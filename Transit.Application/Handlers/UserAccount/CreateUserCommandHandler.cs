@@ -1,4 +1,4 @@
-﻿using Transit.Domain;
+using Transit.Domain;
 using System.Text.Json;
 namespace Transit.Application;
 internal class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, OperationResult<User>>
@@ -68,7 +68,7 @@ internal class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Ope
         result.Payload = user;
         result.Message = "Operation successful";
 
-        // Optional — logging
+        // Optional � logging
         /*
         var options = new JsonSerializerOptions { ReferenceHandler = ReferenceHandler.Preserve, WriteIndented = true };
         await _actionLogService.LogActionAsync(

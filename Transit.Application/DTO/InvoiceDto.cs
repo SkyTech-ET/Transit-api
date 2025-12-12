@@ -1,4 +1,4 @@
-﻿using Transit.Application.Dtos;
+using Transit.Application.Dtos;
 using Transit.Domain.Models.Shared;
 
 namespace Transit.Application;

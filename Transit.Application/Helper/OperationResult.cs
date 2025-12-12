@@ -1,4 +1,4 @@
-﻿namespace Transit.Application.Model;
+namespace Transit.Application.Model;
 
 public class OperationResult<T>
 {

@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Transit.Api;
@@ -104,7 +104,7 @@ public class UserController : BaseController
         // Check if current user is Admin
         bool isAdmin = currentUser.UserRoles.Any(r => r.Role.Name == "Admin");
 
-        // If not admin and trying to update someone else's info — reject it
+        // If not admin and trying to update someone else's info � reject it
         if (!isAdmin && clientRequest.Id != currentUser.Id)
         {
             return Forbid("You are not allowed to update other users.");
@@ -215,10 +215,10 @@ public class UserController : BaseController
             IsConfirmationEmailSent = u.IsConfirmationEmailSent,
             VerificationToken = u.VerificationToken,
 
-            // 🔹 Store Ids
+            // ?? Store Ids
          //   StoreIds = u.UserStores?.Select(s => s.StoreId).ToList() ?? new(),
 
-            // 🔹 Roles mapping
+            // ?? Roles mapping
             Roles = u.UserRoles?.Select(ur => new RoleDetail
             {
                 Id = ur.Role.Id,
@@ -244,7 +244,7 @@ public class UserController : BaseController
 
         }).ToList();
 
-        return HandleSuccessResponse(usersList); // 👉 FIXED
+        return HandleSuccessResponse(usersList); // ?? FIXED
     }
 
 

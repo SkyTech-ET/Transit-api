@@ -1,1 +1,1 @@
-﻿namespace Transit.Application;
+namespace Transit.Application;

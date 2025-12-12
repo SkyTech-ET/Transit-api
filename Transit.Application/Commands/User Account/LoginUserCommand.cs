@@ -1,4 +1,4 @@
-﻿namespace Transit.Application;
+namespace Transit.Application;
 
 public class LoginUserCommand : IRequest<OperationResult<UserLoginDto>>
 {

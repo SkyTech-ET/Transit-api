@@ -1,4 +1,4 @@
-﻿using Transit.Domain.Data;
+using Transit.Domain.Data;
 
 namespace Transit.Application;
 internal class CreateRoleCommandHandler : IRequestHandler<CreateRoleCommand, OperationResult<Role>>

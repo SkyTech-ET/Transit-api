@@ -1,4 +1,4 @@
-﻿namespace Transit.Api.Contracts.User.Request
+namespace Transit.Api.Contracts.User.Request
 {
     public class UserRefreshTokenRequest
     {

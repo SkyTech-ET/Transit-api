@@ -1,4 +1,4 @@
-﻿
+
 namespace Transit.Application.Common;
 
 public class Settings

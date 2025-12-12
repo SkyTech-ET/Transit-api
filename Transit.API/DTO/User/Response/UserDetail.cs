@@ -1,4 +1,4 @@
-﻿using Transit.Domain.Models.Shared;
+using Transit.Domain.Models.Shared;
 
 namespace Transit.Api.Contracts.User.Response;
 
@@ -17,7 +17,7 @@ public class UserDetail
     public string PhoneNumber { get; set; }
     public string VerificationToken { get; set; }
     public int LoginAttemptCount { get; set; }
-    // 🔹 Change from long to List<long> to support multiple store IDs
+    // ?? Change from long to List<long> to support multiple store IDs
     public List<long> StoreIds { get; set; } = new List<long>();
     public DateTime LastLoginDateTime { get; set; }
     public bool IsConfirmationEmailSent { get; set; }

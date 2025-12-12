@@ -1,4 +1,4 @@
-﻿namespace Transit.Api.Contracts.User.Response
+namespace Transit.Api.Contracts.User.Response
 {
     public class UserLoginResponse
     {

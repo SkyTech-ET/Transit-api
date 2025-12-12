@@ -1,4 +1,4 @@
-﻿using Transit.Api;
+using Transit.Api;
 using Transit.Api.Contracts.User.Response;
 using Transit.Application.Handlers.UserAccount;
 using Transit.Domain.Models.Shared;
@@ -42,14 +42,14 @@ public class RolesController : BaseController
         return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(rolesList);
     }
 
-    [HttpGet("GetRolesByUser/{userId}")]
-    public async Task<IActionResult> GetRolesByUser(long userId)
-    {
-        var query = new GetRolesByUser(userId);
-        var result = await _mediator.Send(query);
-        var rolesList = result.Payload.Adapt<List<RoleDetail>>();
-        return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(rolesList);
-    }
+    //[HttpGet("GetRolesByUser/{userId}")]
+    //public async Task<IActionResult> GetRolesByUser(long userId)
+    //{
+    //    //var query = new GetRolesByUser(userId);
+    //    //var result = await _mediator.Send(query);
+    //    //var rolesList = result.Payload.Adapt<List<RoleDetail>>();
+    //    //return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(rolesList);
+    //}
 
     [HttpGet("GetById/{id}")]
     public async Task<IActionResult> GetById(long id)

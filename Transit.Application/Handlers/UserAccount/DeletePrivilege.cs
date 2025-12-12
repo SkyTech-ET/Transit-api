@@ -1,4 +1,4 @@
-﻿namespace Transit.Application;
+namespace Transit.Application;
 public record DeletePrivilege(long id) : IRequest<OperationResult<Unit>>;
 
 internal class DeletePrivilegeHandler : IRequestHandler<DeletePrivilege, OperationResult<Unit>>

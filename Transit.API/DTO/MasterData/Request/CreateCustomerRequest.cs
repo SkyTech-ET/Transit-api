@@ -1,4 +1,4 @@
-﻿namespace Transit.API.DTO.MasterData.Request;
+namespace Transit.API.DTO.MasterData.Request;
 
 public class CreateCustomerRequest
 {

@@ -4,10 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Transit.Api;
 using Transit.Api.Contracts.MOT.Request;
 using Transit.Api.Contracts.MOT.Response;
-using Transit.API.DTO.MasterData;
 using Transit.API.Helpers;
 using Transit.Application;
-using Transit.Application.Handlers;
 using Transit.Controllers;
 using Transit.Domain.Data;
 using Transit.Domain.Models.MOT;
@@ -34,58 +32,23 @@ public class ServiceController : BaseController
     [HttpPost("Create")]
     public async Task<IActionResult> Create([FromBody] CreateServiceRequest request)
     {
-        // Get current authenticated user
         var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
 
-        // Map request to command and set CreatedByUserId
         var command = request.Adapt<CreateServiceCommand>();
         command.CustomerId = request.CustomerId;
         command.CreatedByUserId = currentUserId.Value;
 
-        // Execute command
         var result = await _mediator.Send(command);
 
-        if (result.IsError)
-            return HandleErrorResponse(result.Errors);
-
-        // Map payload to clean response DTO to avoid circular reference
-        var service = result.Payload;
-        var response = new ServiceResponse
-        {
-            Id = service.Id,
-            ServiceNumber = service.ServiceNumber,
-            ItemDescription = service.ItemDescription,
-            DeclaredValue = service.DeclaredValue,
-            CountryOfOrigin = service.CountryOfOrigin,
-            ServiceType = service.ServiceType,
-            CustomerId = service.CustomerId,
-            CreatedByUserId = service.CreatedByUserId,
-            Stages = service.Stages?.Select(s => new ServiceStageResponse
-            {
-                Id = s.Id,
-                Stage = s.Stage,
-                Status = s.RecordStatus,
-                CreatedDate = s.CreatedDate
-            }).ToList() ?? new List<ServiceStageResponse>()
-        };
-
-        return Ok(new
-        {
-            statusCode = 200,
-            error = false,
-            errors = Array.Empty<string>(),
-            message = "Operation Success",
-            response = response
-        });
+        return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(result.Payload);
     }
-
 
     /// <summary>
     /// Get all services with filtering and pagination
     /// </summary>
-    [HttpGet("GetAll/{recordStatus}")]
+    [HttpGet("GetAll")]
     public async Task<IActionResult> GetAll(RecordStatus? recordStatus)
     {
         var query = new GetAllServicesQuery { RecordStatus = recordStatus };
@@ -98,13 +61,18 @@ public class ServiceController : BaseController
     /// Get service by ID
     /// </summary>
     [HttpGet("GetById")]
-    public async Task<IActionResult> GetById(long Id)
+    public async Task<IActionResult> GetById(long id)
     {
-        var query = new GetServiceById(Id);
+        var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
+        if (currentUserId == null)
+            return Unauthorized("User not authenticated");
+
+        var query = new GetServiceByIdQuery { Id = id };
         var result = await _mediator.Send(query);
-        var rolesList = result.Payload.Adapt<ServiceDetail>();
-        return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(rolesList);
+
+        return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(result.Payload);
     }
+
 
 
     /// <summary>
@@ -171,18 +139,22 @@ public class ServiceController : BaseController
     }
 
     /// <summary>
-    /// Assign service to case executor
+    /// Assign service to case executor or assessor
     /// </summary>
-    [HttpPut("AssignServices")]
-    public async Task<IActionResult> AssignServices([FromBody] AssignServiceRequest request)
+    [HttpPut("Assign")]
+    public async Task<IActionResult> Assign([FromBody] AssignServiceRequest request)
     {
         var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
-        var command = request.Adapt<AssignServiceCommand>();
 
-        // Assign the current user ID
-        command.AssignedAssessorId = currentUserId.Value;
+        var command = new AssignServiceCommand
+        {
+            ServiceId = request.ServiceId,
+            AssignedCaseExecutorId = request.AssignedCaseExecutorId,
+            AssignedAssessorId = request.AssignedAssessorId,
+            AssignedByUserId = currentUserId.Value
+        };
 
         var result = await _mediator.Send(command);
 
@@ -211,16 +183,16 @@ public class ServiceController : BaseController
     [HttpPut("UpdateStageStatus")]
     public async Task<IActionResult> UpdateStageStatus([FromBody] UpdateStageStatusRequest request)
     {
-        var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
-        if (currentUserId == null)
-            return Unauthorized("User not authenticated");
+        //var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
+        //if (currentUserId == null)
+        //    return Unauthorized("User not authenticated");
 
         var command = new UpdateServiceStageCommand
         {
             ServiceStageId = request.StageId,
             Status = request.Status,
             Notes = request.Comments,
-            UpdatedByUserId = currentUserId.Value
+          //  UpdatedByUserId = currentUserId.Value
         };
 
         var result = await _mediator.Send(command);

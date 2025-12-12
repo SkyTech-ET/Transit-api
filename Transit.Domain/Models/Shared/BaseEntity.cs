@@ -1,4 +1,4 @@
-﻿namespace Transit.Domain.Models;
+namespace Transit.Domain.Models;
 
 public class BaseEntity
 {

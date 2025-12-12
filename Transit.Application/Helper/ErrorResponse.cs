@@ -1,4 +1,4 @@
-﻿namespace Transit.Api.Contracts.Common
+namespace Transit.Api.Contracts.Common
 {
     public class ErrorResponse
     {

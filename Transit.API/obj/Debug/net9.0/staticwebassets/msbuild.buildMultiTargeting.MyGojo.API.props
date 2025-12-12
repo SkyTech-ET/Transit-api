@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\MyGojo.API.props" />
-</Project>

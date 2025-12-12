@@ -1,4 +1,4 @@
-﻿namespace Transit.Application;
+namespace Transit.Application;
 public class CreateCustomerCommand : IRequest<OperationResult<User>>
 {
     public string BusinessName { get; set; } = string.Empty;

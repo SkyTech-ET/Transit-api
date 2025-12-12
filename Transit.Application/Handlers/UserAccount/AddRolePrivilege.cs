@@ -1,4 +1,4 @@
-﻿namespace Transit.Application;
+namespace Transit.Application;
 
 public record AddRolePrivilege(long RoleId, List<long> Privileges) : IRequest<OperationResult<Unit>>;
 

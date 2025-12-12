@@ -1,4 +1,4 @@
-﻿namespace Transit.Domain.Models;
+namespace Transit.Domain.Models;
 public class Role : BaseEntity
 {
     private List<RolePrivilege> _rolePrivileges = new List<RolePrivilege>();

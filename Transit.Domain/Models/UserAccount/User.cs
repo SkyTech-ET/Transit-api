@@ -1,4 +1,4 @@
-﻿namespace Transit.Domain.Models;
+namespace Transit.Domain.Models;
 
 public class User : BaseEntity
 {
@@ -20,7 +20,7 @@ public class User : BaseEntity
     public string RefreshToken { get; set; } = string.Empty;
     public DateTime RefreshTokenExpireDate { get; set; }
     public ICollection<UserRole> UserRoles { get { return _roles; } }
-    // ✅ One-to-Many: A User belongs to one Store
+    // ? One-to-Many: A User belongs to one Store
     public static User CreateUser(
           string userName,
           string email,

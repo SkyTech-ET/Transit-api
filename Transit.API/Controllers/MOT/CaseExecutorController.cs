@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Transit.Api.Contracts.MOT.Request;
 using Transit.Api.Contracts.MOT.Response;
+using Transit.Api.Contracts.User.Response;
+using Transit.API.DTO.MOT;
 using Transit.API.Helpers;
 using Transit.Application;
 using Transit.Application.Queries;
@@ -10,6 +12,8 @@ using Transit.Controllers;
 using Transit.Domain.Data;
 using Transit.Domain.Models.MOT;
 using Transit.Domain.Models.Shared;
+using Transit.Application.Commands;
+
 
 namespace Transit.API.Controllers.MOT;
 
@@ -54,120 +58,45 @@ public class CaseExecutorController : BaseController
         return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(result.Payload);
     }
 
-    /// <summary>
-    /// Update service stage status
-    /// </summary>
-    [HttpPut("UpdateStageStatus")]
-    public async Task<IActionResult> UpdateStageStatus([FromBody] UpdateStageStatusRequest request)
-    {
-        var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
-        if (currentUserId == null)
-            return Unauthorized("User not authenticated");
 
-        if (!await IsCaseExecutor(currentUserId.Value))
-            return Forbid("Access denied. Case Executor role required.");
-
-        // Verify service is assigned to this case executor
-        var service = await _context.Services
-            .FirstOrDefaultAsync(s => s.Id == request.ServiceId && s.AssignedCaseExecutorId == currentUserId.Value);
-
-        if (service == null)
-            return NotFound("Service not found or not assigned to you");
-
-        var command = new UpdateServiceStageCommand
-        {
-            ServiceStageId = request.StageId,
-            Status = request.Status,
-            Notes = request.Comments,
-            UpdatedByUserId = currentUserId.Value
-        };
-
-        var result = await _mediator.Send(command);
-
-        if (result.IsError)
-            return HandleErrorResponse(result.Errors);
-
-        // Update service status if needed
-        if (request.Status == StageStatus.Completed)
-        {
-            // Check if all stages are completed
-            var allStages = await _context.ServiceStages
-                .Where(s => s.ServiceId == request.ServiceId)
-                .ToListAsync();
-
-            if (allStages.All(s => s.Status == StageStatus.Completed))
-            {
-                service.UpdateStatus(ServiceStatus.Completed);
-                await _context.SaveChangesAsync();
-            }
-        }
-
-        return HandleSuccessResponse(result.Payload);
-    }
 
     /// <summary>
     /// Upload document for a service stage
     /// </summary>
     [HttpPost("UploadStageDocument")]
-    public async Task<IActionResult> UploadStageDocument(
-        [FromForm] long serviceId,
-        [FromForm] long stageId,
-        [FromForm] IFormFile file, 
-        [FromForm] DocumentType documentType,
-        [FromForm] string? description = null)
+    public async Task<IActionResult> UploadStageDocument([FromForm] UploadDocumentRequest request)
     {
-        var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
-        if (currentUserId == null)
-            return Unauthorized("User not authenticated");
-
-        if (!await IsCaseExecutor(currentUserId.Value))
-            return Forbid("Access denied. Case Executor role required.");
-
-        var service = await _context.Services
-            .FirstOrDefaultAsync(s => s.Id == serviceId && s.AssignedCaseExecutorId == currentUserId.Value);
-
-        if (service == null)
-            return NotFound("Service not found or not assigned to you");
-
-        var stage = await _context.ServiceStages
-            .FirstOrDefaultAsync(s => s.Id == stageId && s.ServiceId == serviceId);
-
-        if (stage == null)
-            return NotFound("Service stage not found");
-
-        if (file == null || file.Length == 0)
-            return BadRequest("No file uploaded");
-
-        // Save file
-        var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "service-documents");
-        Directory.CreateDirectory(uploadsFolder);
-
-        var uniqueFileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
-        var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-        using (var fileStream = new FileStream(filePath, FileMode.Create))
+        // 1?? Validate file
+        if (request.File == null || request.File.Length == 0)
         {
-            await file.CopyToAsync(fileStream);
+            return BadRequest(new
+            {
+                Error = true,
+                Message = "Document file is required."
+            });
         }
 
-        // Create document record
-        var document = StageDocument.Create(
-            uniqueFileName,
-            Path.Combine("service-documents", uniqueFileName),
-            file.FileName,
-            Path.GetExtension(file.FileName),
-            file.Length,
-            file.ContentType,
-            documentType,
-            stageId,
-            currentUserId.Value,
-            description
-        );
+        var command = new UploadDocumentCommand
+        {
+            ServiceId = request.ServiceId,
+            StageId = request.StageId,
+            File = request.File,
+            DocumentType = request.DocumentType,
+            Description = request.Description
+            // FilePath can be added if already saved
+        };
 
-        _context.StageDocuments.Add(document);
-        await _context.SaveChangesAsync();
 
-        return HandleSuccessResponse(document);
+        // 6?? Send command to handler
+        var result = await _mediator.Send(command);
+
+        // 7?? Map payload to response DTO if needed
+        var documentDetail = result.Payload?.Adapt<DocumentDetail>();
+
+        // 8?? Return response
+        return result.IsError
+            ? HandleErrorResponse(result.Errors)
+            : HandleSuccessResponse(documentDetail);
     }
 
     /// <summary>
@@ -179,15 +108,6 @@ public class CaseExecutorController : BaseController
         var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
-
-        if (!await IsCaseExecutor(currentUserId.Value))
-            return Forbid("Access denied. Case Executor role required.");
-
-        var service = await _context.Services
-            .FirstOrDefaultAsync(s => s.Id == request.ServiceId && s.AssignedCaseExecutorId == currentUserId.Value);
-
-        if (service == null)
-            return NotFound("Service not found or not assigned to you");
 
         var stage = await _context.ServiceStages
             .FirstOrDefaultAsync(s => s.Id == request.StageId && s.ServiceId == request.ServiceId);

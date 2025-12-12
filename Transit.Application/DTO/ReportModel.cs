@@ -1,4 +1,4 @@
-﻿using Transit.Application.Dtos;
+using Transit.Application.Dtos;
 
 namespace Transit.Application;
 
@@ -10,7 +10,7 @@ public class ReportModel
         InvoiceReport = new InvoiceReport();
     }
     public InvoiceReport InvoiceReport { get; set; }
-    public List<DocumentResponse> Documents { get; set; } = new List<DocumentResponse>();
+    //public List<DocumentResponse> Documents { get; set; } = new List<DocumentResponse>();
     public List<ReportPerOrganization> ReportPerOrganization { get; set; }
 }
 

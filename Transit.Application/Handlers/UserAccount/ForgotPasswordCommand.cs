@@ -1,4 +1,4 @@
-﻿using Mapster;
+using Mapster;
 using System.Text.Json;
 namespace Transit.Application;
 

@@ -1,4 +1,4 @@
-﻿using Transit.Domain.Data;
+using Transit.Domain.Data;
 
 namespace Transit.Application;
 public record DeleteRole(long id) : IRequest<OperationResult<Unit>>;

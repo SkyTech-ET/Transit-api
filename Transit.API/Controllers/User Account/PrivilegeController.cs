@@ -1,4 +1,4 @@
-﻿using Transit.Api;
+using Transit.Api;
 using Transit.Application.Handlers.UserAccount;
 using Transit.Domain.Models.Shared;
 using System.Reflection;
