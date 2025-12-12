@@ -137,14 +137,11 @@ public class CaseExecutorController : BaseController
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
 
-        if (!await IsCaseExecutor(currentUserId.Value))
-            return Forbid("Access denied. Case Executor role required.");
-
         var service = await _context.Services
-            .FirstOrDefaultAsync(s => s.Id == request.ServiceId && s.AssignedCaseExecutorId == currentUserId.Value);
+            .FirstOrDefaultAsync(s => s.Id == request.ServiceId);
 
         if (service == null)
-            return NotFound("Service not found or not assigned to you");
+            return NotFound("Service not found");
 
         service.UpdateRiskLevel(request.RiskLevel);
 
@@ -177,14 +174,6 @@ public class CaseExecutorController : BaseController
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
 
-        if (!await IsCaseExecutor(currentUserId.Value))
-            return Forbid("Access denied. Case Executor role required.");
-
-        var service = await _context.Services
-            .FirstOrDefaultAsync(s => s.Id == request.ServiceId && s.AssignedCaseExecutorId == currentUserId.Value);
-
-        if (service == null)
-            return NotFound("Service not found or not assigned to you");
 
         var stage = await _context.ServiceStages
             .FirstOrDefaultAsync(s => s.Id == request.StageId && s.ServiceId == request.ServiceId);
@@ -208,9 +197,6 @@ public class CaseExecutorController : BaseController
         var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
-
-        if (!await IsCaseExecutor(currentUserId.Value))
-            return Forbid("Access denied. Case Executor role required.");
 
         var dashboard = new Transit.Api.Contracts.MOT.Response.CaseExecutorDashboardResponse
         {
