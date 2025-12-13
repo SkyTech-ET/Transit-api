@@ -46,13 +46,13 @@ public class CaseExecutorController : BaseController
     /// Get service details for execution
     /// </summary>
     [HttpGet("GetAssignedServiceById")]
-    public async Task<IActionResult> GetAssignedServiceById([FromQuery] long Id)
+    public async Task<IActionResult> GetAssignedServiceById([FromQuery] long Id, long AssignedCaseExecutorId)
     {
         var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
 
-        var query = new GetCaseExecutorAssignedServicesByIdQuery { AssignedCaseExecutorId = currentUserId.Value, Id = Id };
+        var query = new GetCaseExecutorAssignedServicesByIdQuery {Id = Id, AssignedCaseExecutorId= AssignedCaseExecutorId };
         var result = await _mediator.Send(query);
        // var rolesList = result.Payload.Adapt<List<ServiceDetail>>();
         return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(result.Payload);

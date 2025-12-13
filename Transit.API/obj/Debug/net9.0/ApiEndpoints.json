@@ -182,6 +182,11 @@
         "Name": "Id",
         "Type": "System.Int64",
         "IsRequired": false
+      },
+      {
+        "Name": "AssignedCaseExecutorId",
+        "Type": "System.Int64",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
