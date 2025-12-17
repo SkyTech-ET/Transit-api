@@ -1,14 +1,15 @@
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Transit.Api.Contracts.MOT.Request;
+using Transit.Api.Contracts.MOT.Response;
+using Transit.API.Helpers;
+using Transit.Application;
+using Transit.Application.Queries;
+using Transit.Controllers;
 using Transit.Domain.Data;
 using Transit.Domain.Models.MOT;
 using Transit.Domain.Models.Shared;
-using Microsoft.EntityFrameworkCore;
-using Transit.Controllers;
-using Transit.API.Helpers;
-using Transit.Application;
-using Transit.Api.Contracts.MOT.Request;
-using Transit.Api.Contracts.MOT.Response;
-using Mapster;
 
 namespace Transit.API.Controllers.MOT;
 
@@ -37,9 +38,6 @@ public class AssessorController : BaseController
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
 
-        if (!await IsAssessor(currentUserId.Value))
-            return Forbid("Access denied. Assessor role required.");
-
         var customers = await _context.Customers
             .Include(c => c.User)
             .Include(c => c.CreatedByDataEncoder)
@@ -61,8 +59,6 @@ public class AssessorController : BaseController
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
 
-        if (!await IsAssessor(currentUserId.Value))
-            return Forbid("Access denied. Assessor role required.");
 
         var command = new ApproveCustomerCommand
         {
@@ -81,25 +77,18 @@ public class AssessorController : BaseController
     /// Get service requests pending review
     /// </summary>
     [HttpGet("GetPendingServiceReviews")]
-    public async Task<IActionResult> GetPendingServiceReviews()
+    public async Task<IActionResult> GetPendingServiceReviews([FromQuery] long serviceId)
     {
         var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
 
-        if (!await IsAssessor(currentUserId.Value))
-            return Forbid("Access denied. Assessor role required.");
+        var query = new GetPendingServiceReviewsQuery { ServiceId = serviceId };
+        var result = await _mediator.Send(query);
 
-        var services = await _context.Services
-            .Include(s => s.Customer)
-            .Include(s => s.CreatedByUserId)
-            .Include(s => s.Documents)
-            .Where(s => s.Status == ServiceStatus.Submitted)
-            .OrderByDescending(s => s.RegisteredDate)
-            .ToListAsync();
-
-        return HandleSuccessResponse(services);
+        return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(result.Payload);
     }
+
 
     /// <summary>
     /// Review and approve/reject a service request
@@ -111,8 +100,6 @@ public class AssessorController : BaseController
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
 
-        if (!await IsAssessor(currentUserId.Value))
-            return Forbid("Access denied. Assessor role required.");
 
         var service = await _context.Services
             .FirstOrDefaultAsync(s => s.Id == request.ServiceId);
@@ -162,9 +149,6 @@ public class AssessorController : BaseController
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
 
-        if (!await IsAssessor(currentUserId.Value))
-            return Forbid("Access denied. Assessor role required.");
-
         var query = _context.Services
             .Include(s => s.Customer)
             .Include(s => s.AssignedCaseExecutor)
@@ -193,9 +177,6 @@ public class AssessorController : BaseController
         var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
-
-        if (!await IsAssessor(currentUserId.Value))
-            return Forbid("Access denied. Assessor role required.");
 
         var service = await _context.Services
             .FirstOrDefaultAsync(s => s.Id == request.ServiceId);
@@ -229,9 +210,6 @@ public class AssessorController : BaseController
         var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
-
-        if (!await IsAssessor(currentUserId.Value))
-            return Forbid("Access denied. Assessor role required.");
 
         var dashboard = new Transit.Api.Contracts.MOT.Response.AssessorDashboardResponse
         {
@@ -269,9 +247,6 @@ public class AssessorController : BaseController
         var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
-
-        if (!await IsAssessor(currentUserId.Value))
-            return Forbid("Access denied. Assessor role required.");
 
         var issues = await _context.ServiceMessages
             .Include(m => m.Service)

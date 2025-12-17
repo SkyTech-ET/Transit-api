@@ -16,9 +16,8 @@ namespace Transit.Api.Filters
         private List<string> anonymous = new List<string>
         {
             "User-Login",
-            "Password-ForgotPassword",
-            "User-GetAll"
-        };
+            "Password-ForgotPassword"
+                };
 
         public List<string> Anonymous { get => anonymous; set => anonymous = value; }
 
