@@ -87,22 +87,13 @@ public class DataEncoderController : BaseController
     [HttpPut("UpdateCustomer")]
     public async Task<IActionResult> UpdateCustomer([FromBody] Transit.Api.Contracts.MOT.Request.UpdateCustomerRequest request)
     {
-        var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
-        if (currentUserId == null)
-            return Unauthorized("User not authenticated");
-
-        if (!await IsDataEncoder(currentUserId.Value))
-            return Forbid("Access denied. Data Encoder role required.");
-
         var customer = await _context.Customers
             .Include(c => c.User)
-            .FirstOrDefaultAsync(c => c.Id == request.CustomerId && c.CreatedByDataEncoderId == currentUserId.Value);
+            .FirstOrDefaultAsync(c => c.Id == request.Id);
 
         if (customer == null)
             return NotFound("Customer not found or not created by you");
 
-        if (customer.IsVerified)
-            return BadRequest("Cannot update verified customer");
 
         customer.UpdateBusinessInfo(
             request.BusinessName,
@@ -130,8 +121,6 @@ public class DataEncoderController : BaseController
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
 
-        if (!await IsDataEncoder(currentUserId.Value))
-            return Forbid("Access denied. Data Encoder role required.");
 
         var dashboard = new Transit.Api.Contracts.MOT.Response.DataEncoderDashboardResponse
         {

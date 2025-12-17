@@ -4,7 +4,7 @@ namespace Transit.Api.Contracts.MOT.Request;
 
 public class UpdateCustomerRequest
 {
-    public long CustomerId { get; set; }
+    public long Id { get; set; }
     public string BusinessName { get; set; } = string.Empty;
     public string TINNumber { get; set; } = string.Empty;
     public string BusinessLicense { get; set; } = string.Empty;
