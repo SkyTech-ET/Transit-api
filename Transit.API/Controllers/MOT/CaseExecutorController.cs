@@ -223,7 +223,35 @@ public class CaseExecutorController : BaseController
         return HandleSuccessResponse(dashboard);
     }
 
+    [HttpGet("DownloadStageDocument")]
+    public async Task<IActionResult> DownloadDocument(
+     [FromQuery] long documentId)
+    {
+        var query = new DownloadStageDocumentQuery
+        {
+            DocumentId = documentId,
+        };
 
+        var result = await _mediator.Send(query);
+
+        var docmunet = result.Payload.Adapt<DownloadDocumentResult>();
+        return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(docmunet);
+    }
+    [HttpPost("DownloadStageDocuments")]
+    public async Task<IActionResult> DownloadDocuments(
+        [FromBody] List<long> documentIds)
+    {
+        var query = new DownloadMultipleStageDocumentsQuery
+        {
+            DocumentIds = documentIds
+        };
+
+        var result = await _mediator.Send(query);
+
+        var docmunetList = result.Payload.Adapt<List<DownloadDocumentResult>>();
+        return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(docmunetList);
+
+    }
     private async Task<bool> IsCaseExecutor(long userId)
     {
         var user = await _context.Users

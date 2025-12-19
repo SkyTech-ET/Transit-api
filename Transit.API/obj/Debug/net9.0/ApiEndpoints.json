@@ -178,6 +178,38 @@
   },
   {
     "ContainingType": "Transit.API.Controllers.MOT.CaseExecutorController",
+    "Method": "DownloadDocument",
+    "RelativePath": "api/v1/CaseExecutor/DownloadStageDocument",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "documentId",
+        "Type": "System.Int64",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Transit.API.Controllers.MOT.CaseExecutorController",
+    "Method": "DownloadDocuments",
+    "RelativePath": "api/v1/CaseExecutor/DownloadStageDocuments",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "documentIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int64, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Transit.API.Controllers.MOT.CaseExecutorController",
     "Method": "GetAssignedServiceById",
     "RelativePath": "api/v1/CaseExecutor/GetAssignedServiceById",
     "HttpMethod": "GET",

@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Transit.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4cb9ccd392522cb55e218932a75c55b8145465e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+257643a8bde2b4de819630e225533578b4651c85")]
 [assembly: System.Reflection.AssemblyProductAttribute("Transit.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Transit.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
