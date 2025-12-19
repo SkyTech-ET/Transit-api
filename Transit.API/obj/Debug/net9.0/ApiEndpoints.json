@@ -547,6 +547,127 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Transit.API.Controllers.MOT.DocumentController",
+    "Method": "DeleteDocument",
+    "RelativePath": "api/v1/Document/DeleteDocument",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "documentId",
+        "Type": "System.Int64",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Transit.API.Controllers.MOT.DocumentController",
+    "Method": "DownloadDocument",
+    "RelativePath": "api/v1/Document/DownloadDocument",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "documentId",
+        "Type": "System.Int64",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Transit.API.Controllers.MOT.DocumentController",
+    "Method": "DownloadDocuments",
+    "RelativePath": "api/v1/Document/DownloadDocuments",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "documentIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int64, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Transit.API.Controllers.MOT.DocumentController",
+    "Method": "GetServiceDocuments",
+    "RelativePath": "api/v1/Document/GetServiceDocuments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "serviceId",
+        "Type": "System.Int64",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Transit.API.Controllers.MOT.DocumentController",
+    "Method": "UploadServiceDocument",
+    "RelativePath": "api/v1/Document/UploadServiceDocument",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ServiceId",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "serviceStageId",
+        "Type": "System.Nullable\u00601[[System.Int64, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "FilePath",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "DocumentType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Transit.API.Controllers.MOT.DocumentController",
+    "Method": "VerifyDocument",
+    "RelativePath": "api/v1/Document/VerifyDocument",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "Transit.Application.Commands.VerifyDocumentCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Transit.API.Controllers.MOT.ManagerController",
     "Method": "AssignExecutor",
     "RelativePath": "api/v1/Manager/AssignExecutor",
