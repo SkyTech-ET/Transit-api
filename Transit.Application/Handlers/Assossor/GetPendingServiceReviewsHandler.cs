@@ -20,13 +20,13 @@ internal class GetPendingServiceReviewsHandler : IRequestHandler<GetPendingServi
     public async Task<OperationResult<Service>> Handle(GetPendingServiceReviewsQuery request, CancellationToken cancellationToken)
     {
         var result = new OperationResult<Service>();
-        var services = await _context.Services.FirstOrDefaultAsync(s => s.Id == request.ServiceId, cancellationToken);
+        //var services = await _context.Services.FirstOrDefaultAsync(s => s.Id == request.ServiceId, cancellationToken);
 
-        if (services == null)
-        {
-            result.AddError(ErrorCode.NotFound, "Service not found.");
-            return result;
-        }
+        //if (services == null)
+        //{
+        //    result.AddError(ErrorCode.NotFound, "Service not found.");
+        //    return result;
+        //}
 
         var service = await _context.Services
             .Include(s => s.Customer)
@@ -38,7 +38,7 @@ internal class GetPendingServiceReviewsHandler : IRequestHandler<GetPendingServi
                 .ThenInclude(stage => stage.Documents)
             .Include(s => s.Documents)
             .Include(s => s.Messages)
-            .FirstOrDefaultAsync(s => s.Id == request.ServiceId && s.Status==ServiceStatus.Submitted, cancellationToken);
+            .FirstOrDefaultAsync(s =>s.Status==ServiceStatus.Approved, cancellationToken);
 
         result.Payload = service;
         result.Message = "Operation success";
