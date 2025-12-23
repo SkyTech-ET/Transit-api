@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Transit.Application.Queries;
 using Transit.Domain.Models.MOT;
 using Transit.Domain.Models.Shared;
@@ -11,18 +6,27 @@ namespace Transit.Application.Handlers;
 internal class GetAssignedServicesHandler : IRequestHandler<GetAssignedServicesQuery, OperationResult<List<Service>>>
 {
     private readonly ApplicationDbContext _context;
-    public GetAssignedServicesHandler(ApplicationDbContext context)
+    private object _httpContextAccessor;
+
+    public GetAssignedServicesHandler(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
     {
         _context = context;
+        _httpContextAccessor = httpContextAccessor;
     }
+
+    public object JwtHelper { get; private set; }
+
     public async Task<OperationResult<List<Service>>> Handle(GetAssignedServicesQuery request, CancellationToken cancellationToken)
     {
         var result = new OperationResult<List<Service>>();
+
         try
         {
+     
             //var services = await _context.Services.OrderByDescending(o => o.StartDate).ToListAsync();
             var servicesQuery = _context.Services
-                                      .Where(s => s.AssignedCaseExecutorId == request.AssignedCaseExecutorId)
+                                      .Where(s => s.AssignedCaseExecutorId == request.AssignedCaseExecutorId
+                                      )
                                       .OrderByDescending(s => s.StartDate)
                                       .AsQueryable();
 

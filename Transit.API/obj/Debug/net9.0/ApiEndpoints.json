@@ -220,11 +220,6 @@
         "Name": "Id",
         "Type": "System.Int64",
         "IsRequired": false
-      },
-      {
-        "Name": "AssignedCaseExecutorId",
-        "Type": "System.Int64",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -237,11 +232,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [
-      {
-        "Name": "AssignedCaseExecutorId",
-        "Type": "System.Int64",
-        "IsRequired": false
-      },
       {
         "Name": "recordStatus",
         "Type": "System.String",

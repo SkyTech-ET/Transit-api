@@ -34,9 +34,12 @@ public class CaseExecutorController : BaseController
     /// Get assigned services for the case executor
     /// </summary>
     [HttpGet("GetAssignedServices")]
-    public async Task<IActionResult> GetAssignedServices([FromQuery] long AssignedCaseExecutorId, RecordStatus? recordStatus)
+    public async Task<IActionResult> GetAssignedServices([FromQuery] RecordStatus? recordStatus)
     {
-        var query = new GetAssignedServicesQuery { AssignedCaseExecutorId = AssignedCaseExecutorId, RecordStatus = recordStatus };
+        var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
+        if (currentUserId == null)
+            return Unauthorized("User not authenticated");
+        var query = new GetAssignedServicesQuery { AssignedCaseExecutorId = currentUserId.Value, RecordStatus = recordStatus };
         var result = await _mediator.Send(query);
         var rolesList = result.Payload.Adapt<List<ServiceDetail>>();
         return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(rolesList);
@@ -46,13 +49,13 @@ public class CaseExecutorController : BaseController
     /// Get service details for execution
     /// </summary>
     [HttpGet("GetAssignedServiceById")]
-    public async Task<IActionResult> GetAssignedServiceById([FromQuery] long Id, long AssignedCaseExecutorId)
+    public async Task<IActionResult> GetAssignedServiceById([FromQuery] long Id)
     {
         var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
 
-        var query = new GetCaseExecutorAssignedServicesByIdQuery {Id = Id, AssignedCaseExecutorId= AssignedCaseExecutorId };
+        var query = new GetCaseExecutorAssignedServicesByIdQuery {Id = Id, AssignedCaseExecutorId= currentUserId.Value };
         var result = await _mediator.Send(query);
        // var rolesList = result.Payload.Adapt<List<ServiceDetail>>();
         return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(result.Payload);
