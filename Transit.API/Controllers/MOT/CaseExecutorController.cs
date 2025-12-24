@@ -227,7 +227,7 @@ public class CaseExecutorController : BaseController
     }
 
     [HttpGet("DownloadStageDocument")]
-    public async Task<IActionResult> DownloadDocument(
+    public async Task<IActionResult> DownloadStageDocument(
      [FromQuery] long documentId)
     {
         var query = new DownloadStageDocumentQuery
@@ -241,7 +241,7 @@ public class CaseExecutorController : BaseController
         return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(docmunet);
     }
     [HttpPost("DownloadStageDocuments")]
-    public async Task<IActionResult> DownloadDocuments(
+    public async Task<IActionResult> DownloadStageDocuments(
         [FromBody] List<long> documentIds)
     {
         var query = new DownloadMultipleStageDocumentsQuery
