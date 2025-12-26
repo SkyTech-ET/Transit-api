@@ -9,5 +9,5 @@ namespace Transit.Application.Queries;
 
 public class GetPendingServiceReviewsQuery : IRequest<OperationResult<Service>>
 {
-    public long ServiceId { get; set; }
+    public long UserId { get; set; }
 }

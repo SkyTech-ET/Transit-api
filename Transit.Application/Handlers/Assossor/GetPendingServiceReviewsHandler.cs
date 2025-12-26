@@ -38,7 +38,7 @@ internal class GetPendingServiceReviewsHandler : IRequestHandler<GetPendingServi
                 .ThenInclude(stage => stage.Documents)
             .Include(s => s.Documents)
             .Include(s => s.Messages)
-            .FirstOrDefaultAsync(s =>s.Status==ServiceStatus.Approved, cancellationToken);
+            .FirstOrDefaultAsync(s =>s.Status==ServiceStatus.Draft, cancellationToken);
 
         result.Payload = service;
         result.Message = "Operation success";

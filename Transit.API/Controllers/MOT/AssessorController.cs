@@ -77,13 +77,13 @@ public class AssessorController : BaseController
     /// Get service requests pending review
     /// </summary>
     [HttpGet("GetPendingServiceReviews")]
-    public async Task<IActionResult> GetPendingServiceReviews([FromQuery] long serviceId)
+    public async Task<IActionResult> GetPendingServiceReviews()
     {
         var currentUserId = JwtHelper.GetCurrentUserId(_httpContextAccessor, _context);
         if (currentUserId == null)
             return Unauthorized("User not authenticated");
 
-        var query = new GetPendingServiceReviewsQuery { ServiceId = serviceId };
+        var query = new GetPendingServiceReviewsQuery { UserId = currentUserId.Value };
         var result = await _mediator.Send(query);
 
         return result.IsError ? HandleErrorResponse(result.Errors) : HandleSuccessResponse(result.Payload);
