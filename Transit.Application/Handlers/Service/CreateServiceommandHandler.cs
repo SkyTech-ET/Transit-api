@@ -1,7 +1,9 @@
+using Microsoft.Identity.Client.Extensions.Msal;
+using System.Text.Json;
+using System.Threading;
 using Transit.Domain;
 using Transit.Domain.Models.MOT;
 using Transit.Domain.Models.Shared;
-using System.Text.Json;
 
 namespace Transit.Application;
 
@@ -106,9 +108,15 @@ internal class CreateServiceommandHandler : IRequestHandler<CreateServiceCommand
                 stages.AddRange(new[]
                 {
                     ServiceStageExecution.Create(serviceId, ServiceStage.PrepaymentInvoice),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.TransitPermission),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.Amendment),
                     ServiceStageExecution.Create(serviceId, ServiceStage.DropRisk),
                     ServiceStageExecution.Create(serviceId, ServiceStage.DeliveryOrder),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.WarehouseStatus),
                     ServiceStageExecution.Create(serviceId, ServiceStage.Inspection),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.AssessmentandTaxPayment),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.Emergency),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.ExitandStoragePayment),
                     ServiceStageExecution.Create(serviceId, ServiceStage.Transportation),
                     ServiceStageExecution.Create(serviceId, ServiceStage.Clearance)
                 });
@@ -117,12 +125,19 @@ internal class CreateServiceommandHandler : IRequestHandler<CreateServiceCommand
                 stages.AddRange(new[]
                 {
                     ServiceStageExecution.Create(serviceId, ServiceStage.PrepaymentInvoice),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.TransitPermission),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.Amendment),
                     ServiceStageExecution.Create(serviceId, ServiceStage.DropRisk),
                     ServiceStageExecution.Create(serviceId, ServiceStage.DeliveryOrder),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.WarehouseStatus),
                     ServiceStageExecution.Create(serviceId, ServiceStage.Inspection),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.AssessmentandTaxPayment),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.Emergency),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.ExitandStoragePayment),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.Transportation),
                     ServiceStageExecution.Create(serviceId, ServiceStage.LocalPermission),
                     ServiceStageExecution.Create(serviceId, ServiceStage.Arrival),
-                    ServiceStageExecution.Create(serviceId, ServiceStage.StoreSettlement)
+                    ServiceStageExecution.Create(serviceId, ServiceStage.Clearance)
                 });
                 break;
             default:
@@ -134,7 +149,6 @@ internal class CreateServiceommandHandler : IRequestHandler<CreateServiceCommand
                 });
                 break;
         }
-
         _context.ServiceStages.AddRange(stages);
         await _context.SaveChangesAsync(cancellationToken);
     }

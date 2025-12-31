@@ -20,13 +20,13 @@ public class Service : BaseEntity
     public long CustomerId { get; private set; }
     public long? AssignedCaseExecutorId { get; private set; }
     public long? AssignedAssessorId { get; private set; }
-    public long CreatedByDataEncoderId { get; private set; }
+    public long? CreatedByDataEncoderId { get; private set; }
     
     // Navigation Properties
     public User Customer { get; set; }
     public User? AssignedCaseExecutor { get; set; }
     public User? AssignedAssessor { get; set; }
-    public long CreatedByUserId { get; set; }
+    public long? CreatedByUserId { get; set; }
     
     public ICollection<ServiceStageExecution> Stages => _stages;
     public ICollection<ServiceDocument> Documents => _documents;

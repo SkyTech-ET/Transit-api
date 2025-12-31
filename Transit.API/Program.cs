@@ -11,8 +11,12 @@ using Transit.Application.DataSeeder;
 using Transit.Application.Options;
 using Transit.Domain.Data;
 
-var builder = WebApplication.CreateBuilder(args);
-
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+    Args = args,
+    ContentRootPath = AppContext.BaseDirectory,                      // publish folder
+    WebRootPath = Path.Combine(AppContext.BaseDirectory, "wwwroot")  // static files folder
+});
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddHttpContextAccessor();
@@ -30,27 +34,33 @@ builder.Services.AddControllers(config =>
 builder.Services.AddHostedService<LogCleanupService>();
 
 // --- DATABASE CONFIGURATION ---
-string connectionString;
+//string connectionString;
 
-// Use Postgres in production, SQLite for local dev
-if (builder.Environment.IsProduction())
-{
-    connectionString = builder.Configuration.GetConnectionString("ProductionConnection");
-    builder.Services.AddDbContext<ApplicationDbContext>(options =>
-        options.UseNpgsql(connectionString)
-    );
-}
-else
-{
-    // SQLite for development
-    connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+//// Use different connection strings for Production vs Development
+//if (builder.Environment.IsProduction())
+//{
+//    connectionString = builder.Configuration.GetConnectionString("ProductionConnection");
+//}
+//else
+//{
+//    connectionString = builder.Configuration.GetConnectionString("DevelopmentConnection");
+//}
 
-    builder.Services.AddDbContext<ApplicationDbContext>(options =>
-        options.UseSqlite(connectionString)
-    );
+//// Configure DbContext with SQL Server
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//    options.UseSqlServer(connectionString, sqlOptions =>
+//        sqlOptions.EnableRetryOnFailure(
+//            maxRetryCount: 5,                // retry up to 5 times
+//            maxRetryDelay: TimeSpan.FromSeconds(10), // wait 10s between retries
+//            errorNumbersToAdd: null          // apply to all transient errors
+//        )
+//    )
+//);
 
-
-}
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DevelopmentConnection"))
+           .EnableSensitiveDataLogging()
+           .LogTo(Console.WriteLine, LogLevel.Information));
 
 // --- CORS ---
 builder.Services.AddCors(options =>
@@ -61,6 +71,9 @@ builder.Services.AddCors(options =>
                 "http://localhost:3000",
                 "http://localhost:3001",
                 "http://localhost:5000",
+                "http://localhost:5002",
+                  "https://localhost:5002",
+                "http://localhost:8081",
                 "http://localhost:5001",
                 "https://192.168.43.215:7236",
                 "http://192.168.43.215:7236",
@@ -121,15 +134,35 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SigningKey)) // ? Correct
         };
     });
+
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5002, listenOptions => listenOptions.UseHttps());
+
+});
+
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    AdminPrivilegeSeeder.Seed(scope.ServiceProvider);
+}
 
 // Static files for profile photos
+var profilePhotoPath = Path.Combine(builder.Environment.WebRootPath, "Profile_Photo");
+
+// Ensure folder exists (optional)
+if (!Directory.Exists(profilePhotoPath))
+{
+    Directory.CreateDirectory(profilePhotoPath);
+}
+
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(
-        Path.Combine(builder.Environment.WebRootPath, "Profile_Photo")),
+    FileProvider = new PhysicalFileProvider(profilePhotoPath),
     RequestPath = "/api/v1/Profile_Photo"
 });
+
 app.UseAuthentication();
 app.MapOpenApi();
 app.MapScalarApiReference();

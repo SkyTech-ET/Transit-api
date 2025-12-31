@@ -1,3 +1,6 @@
+using Microsoft.Identity.Client.Extensions.Msal;
+using System.Threading;
+
 namespace Transit.Domain.Models.Shared;
 
 public enum RecordStatus
@@ -89,21 +92,33 @@ public enum ServiceStatus
     Cancelled = 8
 }
 
+public enum inspectionType
+{
+    Agreed=1,
+    Disagreed=2
+}
+public enum  StageSpot
+{
+   Released=1,
+   Notify=2
+}
 public enum ServiceStage
 {
     PrepaymentInvoice = 1,
-    DropRisk = 2,
-    DeliveryOrder = 3,
-    Inspection = 4,
-    Emergency = 5,
-    Exit = 6,
-    Transportation = 7,
-    Clearance = 8,
-    LocalPermission = 9, // Unimodal only
-    Arrival = 10, // Unimodal only
-    StoreSettlement = 11
+    TransitPermission=2,
+    Amendment=3,
+    DropRisk = 4,
+    DeliveryOrder = 5,
+    WarehouseStatus=6,
+    Inspection = 7,
+    AssessmentandTaxPayment=8,
+    Emergency = 9,
+    ExitandStoragePayment = 10,
+    Transportation = 11,
+    LocalPermission = 12, // Unimodal only
+    Arrival = 13, // Unimodal only
+    Clearance = 14,
 }
-
 public enum StageStatus
 {
     NotStarted = 1,
@@ -113,7 +128,11 @@ public enum StageStatus
     Blocked = 5,
     NeedsReview = 6
 }
-
+public enum ProductAmount
+{
+    Container=1,
+    Ton=2
+}
 public enum RiskLevel
 {
     Blue = 1,

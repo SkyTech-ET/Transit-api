@@ -11,14 +11,14 @@ public class ServiceMessage : BaseEntity
     public string? Priority { get; private set; }
 
     // Foreign Keys
-    public long ServiceId { get; private set; }
-    public long SenderUserId { get; private set; }
+    public long? ServiceId { get; private set; }
+    public long? SenderUserId { get; private set; }
     public long? RecipientUserId { get; private set; }
     public long? ServiceStageId { get; private set; }
 
     // Navigation Properties
-    public Service Service { get; set; }
-    public User SenderUser { get; set; }
+    public Service? Service { get; set; }
+    public User? SenderUser { get; set; }
     public User? RecipientUser { get; set; }
     public ServiceStageExecution? ServiceStage { get; set; }
 

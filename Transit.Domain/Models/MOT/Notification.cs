@@ -14,12 +14,12 @@ public class Notification : BaseEntity
     public bool IsUrgent { get; private set; }
 
     // Foreign Keys
-    public long UserId { get; private set; }
+    public long? UserId { get; private set; }
     public long? ServiceId { get; private set; }
     public long? ServiceStageId { get; private set; }
 
     // Navigation Properties
-    public User User { get; set; }
+    public User? User { get; set; }
     public Service? Service { get; set; }
     public ServiceStageExecution? ServiceStage { get; set; }
 

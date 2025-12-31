@@ -2,8 +2,8 @@ namespace Transit.Domain.Models;
 
 public class Privilege : BaseEntity
 {
-    public string Action { get; private set; } = string.Empty;
-    public string Description { get; private set; } = string.Empty;
+    public string Action { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
 
     //factory
     public static Privilege Create(string name, string descripton)

@@ -17,13 +17,13 @@ public class StageDocument : BaseEntity
     public string? VerificationNotes { get; private set; }
 
     // Foreign Keys
-    public long ServiceStageId { get; private set; }
-    public long UploadedByUserId { get; private set; }
+    public long? ServiceStageId { get; private set; }
+    public long? UploadedByUserId { get; private set; }
     public long? VerifiedByUserId { get; private set; }
 
     // Navigation Properties
-    public ServiceStageExecution ServiceStage { get; set; }
-    public User UploadedByUser { get; set; }
+    public ServiceStageExecution? ServiceStage { get; set; }
+    public User? UploadedByUser { get; set; }
     public User? VerifiedByUser { get; set; }
 
     public static StageDocument Create(

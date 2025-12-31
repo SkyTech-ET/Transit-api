@@ -23,7 +23,7 @@ public class Customer : BaseEntity
     public string? VerificationNotes { get; private set; }
 
     // Foreign Keys
-    public long UserId { get; private set; }
+    public long? UserId { get; private set; }
     public long CreatedByDataEncoderId { get; private set; }
 
     // Navigation Properties

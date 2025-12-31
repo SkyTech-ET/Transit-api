@@ -16,13 +16,13 @@ public class CustomerDocument : BaseEntity
     public DateTime? ExpiryDate { get; private set; }
 
     // Foreign Keys
-    public long CustomerId { get; private set; }
-    public long UploadedByUserId { get; private set; }
+    public long? CustomerId { get; private set; }
+    public long? UploadedByUserId { get; private set; }
     public long? VerifiedByUserId { get; private set; }
 
     // Navigation Properties
-    public Customer Customer { get; set; }
-    public User UploadedByUser { get; set; }
+    public Customer? Customer { get; set; }
+    public User? UploadedByUser { get; set; }
     public User? VerifiedByUser { get; set; }
 
     public static CustomerDocument Create(

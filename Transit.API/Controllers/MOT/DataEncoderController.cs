@@ -158,12 +158,17 @@ public class DataEncoderController : BaseController
             ServiceStage.DeliveryOrder,
             ServiceStage.Inspection,
             ServiceStage.Emergency,
-            ServiceStage.Exit,
-            ServiceStage.Transportation,
             ServiceStage.Clearance,
-            ServiceStage.StoreSettlement
-        };
+            ServiceStage.Transportation,
+            ServiceStage.AssessmentandTaxPayment,
+            ServiceStage.WarehouseStatus,
+            ServiceStage.TransitPermission,
+            ServiceStage.Amendment,
+            ServiceStage.ExitandStoragePayment,
 
+
+
+        };
         // Add unimodal-specific stages
         if (serviceType == ServiceType.Unimodal)
         {

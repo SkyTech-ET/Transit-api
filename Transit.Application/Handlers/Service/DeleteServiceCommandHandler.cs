@@ -25,11 +25,10 @@ internal class DeleteServiceCommandHandler : IRequestHandler<DeleteServiceComman
             return result;
         }
 
-        _context.Services.Remove(service);
-        await _context.SaveChangesAsync(cancellationToken);
-
-        result.Payload = true;
-        result.Message = "Service deleted successfully";
+       service.UpdateStatus(Domain.Models.Shared.RecordStatus.Deleted);
+        _context.Services.Update(service);
+        await _context.SaveChangesAsync();
+        result.Message = "Operation success";
         return result;
     }
 }

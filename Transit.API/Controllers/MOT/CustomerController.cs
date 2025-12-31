@@ -234,11 +234,17 @@ public class CustomerController : BaseController
         {
             case ServiceType.Multimodal:
                 stages.AddRange(new[]
-                {
+                  {
                     ServiceStageExecution.Create(serviceId, ServiceStage.PrepaymentInvoice),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.TransitPermission),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.Amendment),
                     ServiceStageExecution.Create(serviceId, ServiceStage.DropRisk),
                     ServiceStageExecution.Create(serviceId, ServiceStage.DeliveryOrder),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.WarehouseStatus),
                     ServiceStageExecution.Create(serviceId, ServiceStage.Inspection),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.AssessmentandTaxPayment),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.Emergency),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.ExitandStoragePayment),
                     ServiceStageExecution.Create(serviceId, ServiceStage.Transportation),
                     ServiceStageExecution.Create(serviceId, ServiceStage.Clearance)
                 });
@@ -247,12 +253,19 @@ public class CustomerController : BaseController
                 stages.AddRange(new[]
                 {
                     ServiceStageExecution.Create(serviceId, ServiceStage.PrepaymentInvoice),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.TransitPermission),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.Amendment),
                     ServiceStageExecution.Create(serviceId, ServiceStage.DropRisk),
                     ServiceStageExecution.Create(serviceId, ServiceStage.DeliveryOrder),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.WarehouseStatus),
                     ServiceStageExecution.Create(serviceId, ServiceStage.Inspection),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.AssessmentandTaxPayment),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.Emergency),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.ExitandStoragePayment),
+                    ServiceStageExecution.Create(serviceId, ServiceStage.Transportation),
                     ServiceStageExecution.Create(serviceId, ServiceStage.LocalPermission),
                     ServiceStageExecution.Create(serviceId, ServiceStage.Arrival),
-                    ServiceStageExecution.Create(serviceId, ServiceStage.StoreSettlement)
+                    ServiceStageExecution.Create(serviceId, ServiceStage.Clearance)
                 });
                 break;
             default:

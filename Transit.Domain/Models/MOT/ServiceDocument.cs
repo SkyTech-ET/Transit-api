@@ -15,15 +15,15 @@ public class ServiceDocument : BaseEntity
     public string? VerificationNotes { get; private set; }
 
     // Foreign Keys
-    public long ServiceId { get; private set; }
+    public long? ServiceId { get; private set; }
     public long? ServiceStageId { get; private set; }
-    public long UploadedByUserId { get; private set; }
+    public long? UploadedByUserId { get; private set; }
     public long? VerifiedByUserId { get; private set; }
 
     // Navigation Properties
-    public Service Service { get; set; }
+    public Service? Service { get; set; }
     public ServiceStageExecution? ServiceStage { get; set; }
-    public User UploadedByUser { get; set; }
+    public User? UploadedByUser { get; set; }
     public User? VerifiedByUser { get; set; }
 
     public static ServiceDocument Create(

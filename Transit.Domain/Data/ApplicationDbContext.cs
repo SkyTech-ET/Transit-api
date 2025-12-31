@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 using Transit.Domain.Models.MOT;
 
@@ -35,24 +35,24 @@ namespace Transit.Domain.Data
 
         private void ConfigureMOTEntities(ModelBuilder modelBuilder)
         {
-            // Service configurations
-            modelBuilder.Entity<Service>()
-                .HasOne(s => s.Customer)
-                .WithMany()
-                .HasForeignKey(s => s.CustomerId)
-                .OnDelete(DeleteBehavior.Restrict);
+            var service = modelBuilder.Entity<Service>();
 
-            modelBuilder.Entity<Service>()
-                .HasOne(s => s.AssignedCaseExecutor)
+            // You MUST set both to NoAction to satisfy SQL Server
+            service.HasOne(s => s.AssignedCaseExecutor)
                 .WithMany()
                 .HasForeignKey(s => s.AssignedCaseExecutorId)
-                .OnDelete(DeleteBehavior.SetNull);
+                .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<Service>()
-                .HasOne(s => s.AssignedAssessor)
+            service.HasOne(s => s.AssignedAssessor)
                 .WithMany()
                 .HasForeignKey(s => s.AssignedAssessorId)
-                .OnDelete(DeleteBehavior.SetNull);
+                .OnDelete(DeleteBehavior.NoAction);
+
+            // Ensure Customer and CreatedBy also don't conflict
+            service.HasOne(s => s.Customer)
+                .WithMany()
+                .HasForeignKey(s => s.CustomerId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             // ServiceStageExecution configurations
             modelBuilder.Entity<ServiceStageExecution>()
@@ -67,25 +67,32 @@ namespace Transit.Domain.Data
                 .HasForeignKey(ss => ss.UpdatedByUserId)
                 .OnDelete(DeleteBehavior.SetNull);
 
-            // ServiceDocument configurations
+            // 1. Fix the Service -> ServiceDocument relationship
             modelBuilder.Entity<ServiceDocument>()
                 .HasOne(sd => sd.Service)
                 .WithMany(s => s.Documents)
                 .HasForeignKey(sd => sd.ServiceId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.NoAction); // Change from Cascade to NoAction
 
+            // 2. While we are here, fix the Stage -> Document relationship to be safe
             modelBuilder.Entity<ServiceDocument>()
                 .HasOne(sd => sd.ServiceStage)
                 .WithMany()
                 .HasForeignKey(sd => sd.ServiceStageId)
-                .OnDelete(DeleteBehavior.SetNull);
+                .OnDelete(DeleteBehavior.NoAction); // Change from SetNull to NoAction
 
+            // 3. Ensure User relationships in this table are also NoAction
             modelBuilder.Entity<ServiceDocument>()
                 .HasOne(sd => sd.UploadedByUser)
                 .WithMany()
                 .HasForeignKey(sd => sd.UploadedByUserId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.NoAction);
 
+            modelBuilder.Entity<ServiceDocument>()
+                .HasOne(sd => sd.VerifiedByUser)
+                .WithMany()
+                .HasForeignKey(sd => sd.VerifiedByUserId)
+                .OnDelete(DeleteBehavior.NoAction);
             // Customer configurations
             modelBuilder.Entity<Customer>()
                 .HasOne(c => c.User)
@@ -181,6 +188,7 @@ namespace Transit.Domain.Data
         public DbSet<StageDocument> StageDocuments { get; set; }
         public DbSet<StageComment> StageComments { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<StageTransport> StageTransports { get; set; }
         public DbSet<CustomerDocument> CustomerDocuments { get; set; }
         #endregion
 

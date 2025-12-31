@@ -7,7 +7,10 @@ public class ServiceStageExecution : BaseEntity
 
     public Shared.ServiceStage Stage { get; private set; }
     public StageStatus Status { get; private set; }
+    public inspectionType? InspectionType { get; private set; }
+    public StageSpot? StageSpot { get; private set; }
     public string? Comments { get; private set; }
+    public string? SpotComment { get; private set; }
     public DateTime? StartedAt { get; private set; }
     public DateTime? CompletedAt { get; private set; }
     public string? AssignedTo { get; private set; }
@@ -17,11 +20,11 @@ public class ServiceStageExecution : BaseEntity
     public string? BlockReason { get; private set; }
 
     // Foreign Keys
-    public long ServiceId { get; private set; }
+    public long? ServiceId { get; private set; }
     public long? UpdatedByUserId { get; private set; }
 
     // Navigation Properties
-    public Service Service { get; set; }
+    public Service? Service { get; set; }
     public User? UpdatedByUser { get; set; }
     
     public ICollection<StageDocument> Documents => _documents;
